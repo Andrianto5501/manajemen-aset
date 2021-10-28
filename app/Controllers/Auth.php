@@ -8,6 +8,10 @@ class Auth extends BaseController
 {
     public function index()
     {
+        if (session('username')) {
+            return redirect()->to('home');
+        }
+
         $data = [
             'title' => 'PT. Satria Dirgantara',
             'validation' => \Config\Services::validation(),

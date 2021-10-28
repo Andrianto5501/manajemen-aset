@@ -33,7 +33,17 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Auth::index');
 $routes->get('/auth/logout', 'Auth::logout');
-$routes->get('/home', 'Home::index', ['filter' => 'is_logged_in']);
+$routes->get('/home', 'Home::index', ['filter' => 'isLoggedIn']);
+
+// user
+$routes->get('/user', 'User::index');
+$routes->get('/user/add', 'User::create');
+$routes->post('/user', 'User::save');
+$routes->get('/user/edit/(:any)', 'User::edit/$1');
+$routes->put('/user/(:any)', 'User::update/$1');
+$routes->delete('/user/(:num)', 'User::delete/$1');
+$routes->get('/user/detail/(:segment)', 'User::detail/$1');
+
 
 /*
  * --------------------------------------------------------------------
