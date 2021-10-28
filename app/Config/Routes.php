@@ -44,6 +44,13 @@ $routes->put('/user/(:any)', 'User::update/$1');
 $routes->delete('/user/(:num)', 'User::delete/$1');
 $routes->get('/user/detail/(:segment)', 'User::detail/$1');
 
+// gedung
+$routes->get('/gedung', 'Gedung::index');
+$routes->get('/gedung/add', 'Gedung::create');
+$routes->post('/gedung', 'Gedung::save');
+$routes->get('/gedung/edit/(:any)', 'Gedung::edit/$1');
+$routes->put('/gedung/(:any)', 'Gedung::update/$1');
+$routes->delete('/gedung/(:num)', 'Gedung::delete/$1');
 
 /*
  * --------------------------------------------------------------------

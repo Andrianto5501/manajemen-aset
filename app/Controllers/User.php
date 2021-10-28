@@ -13,6 +13,7 @@ class User extends BaseController
     {
         $this->userModel = new UserModel();
     }
+
     public function index()
     {
         $data = [

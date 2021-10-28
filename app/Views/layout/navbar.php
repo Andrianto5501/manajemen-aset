@@ -34,11 +34,14 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-door-open"></i></div>
                         Data Ruangan
                     </a>
-                    <a class="nav-link <?= ($title == "Data Gedung") ? 'active' : ''; ?>" href="/gedung">
-                        <div class="sb-nav-link-icon"><i class="fas fa-building"></i></div>
-                        Data Gedung
-                    </a>
-                    <!-- End Data Aset -->
+
+                    <?php if (session()->get('role') == 1 || session()->get('role') == 2) : ?>
+                        <a class="nav-link <?= ($title == "Data Gedung") ? 'active' : ''; ?>" href="/gedung">
+                            <div class="sb-nav-link-icon"><i class="fas fa-building"></i></div>
+                            Data Gedung
+                        </a>
+                    <?php endif; ?>
+                    <!-- End Data Master -->
 
                     <div class="sb-sidenav-menu-heading">Laporan</div>
                     <a class="nav-link <?= ($title == "Laporan Aset") ? 'active' : ''; ?>" href="/laporan">
