@@ -52,6 +52,14 @@ $routes->get('/gedung/edit/(:any)', 'Gedung::edit/$1');
 $routes->put('/gedung/(:any)', 'Gedung::update/$1');
 $routes->delete('/gedung/(:num)', 'Gedung::delete/$1');
 
+// ruangan
+$routes->get('/ruang', 'Ruang::index');
+$routes->get('/ruang/add', 'Ruang::create');
+$routes->post('/ruang', 'Ruang::save');
+$routes->get('/ruang/edit/(:any)', 'Ruang::edit/$1');
+$routes->put('/ruang/(:any)', 'Ruang::update/$1');
+$routes->delete('/ruang/(:num)', 'Ruang::delete/$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

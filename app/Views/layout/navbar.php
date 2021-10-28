@@ -30,7 +30,7 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-laptop"></i></div>
                         Data Aset
                     </a>
-                    <a class="nav-link <?= ($title ==  "Data Ruangan") ? 'active' : ''; ?>" href="/ruangan">
+                    <a class="nav-link <?= ($title ==  "Data Ruangan") ? 'active' : ''; ?>" href="/ruang">
                         <div class="sb-nav-link-icon"><i class="fas fa-door-open"></i></div>
                         Data Ruangan
                     </a>
