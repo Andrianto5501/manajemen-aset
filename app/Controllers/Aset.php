@@ -7,6 +7,8 @@ use App\Models\UserModel;
 use Endroid\QrCode\QrCode;
 use App\Controllers\BaseController;
 use Endroid\QrCode\Writer\PngWriter;
+use PhpOffice\PhpSpreadsheet\Reader\Xls;
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
 class Aset extends BaseController
 {
@@ -17,6 +19,8 @@ class Aset extends BaseController
     {
         $this->userModel = new UserModel();
         $this->asetModel = new AsetModel();
+
+        helper('form');
     }
 
     public function index()
@@ -464,5 +468,64 @@ class Aset extends BaseController
         $builder->delete(['kode_barang' => $kode]);
         session()->setFlashdata('message', '<div class="alert alert-success">Data <strong>aset</strong> berhasil dihapus permanen!</div>');
         return redirect()->to('/aset/trash');
+    }
+
+    public function excel()
+    {
+        $data = [
+            'title' => 'Import Excel',
+        ];
+
+        return view('aset/excel', $data);
+    }
+
+    public function import()
+    {
+        $file = $this->request->getFile('file_excel');
+        $ext = $file->getClientExtension();
+
+        if ($ext == 'xls') {
+            $render = new Xls();
+        } else {
+            $render = new Xlsx();
+        }
+
+        $spreadsheet = $render->load($file);
+
+        $sheet = $spreadsheet->getActiveSheet()->toArray();
+
+        foreach ($sheet as $x => $excel) {
+            if ($x == 0) {
+                continue;
+            }
+
+            $data = [
+                'nomor' => $excel['1'],
+                'sub_nomor' => $excel['2'],
+                'satuan' => $excel['3'],
+                'kode_barang' => $excel['4'],
+                'no_aset' => $excel['5'],
+                'tercatat' => $excel['6'],
+                'kode_lokasi' => $excel['7'],
+                'kode_perkap' => $excel['8'],
+                'kondisi_aset' => $excel['9'],
+                'uraian_aset' => $excel['10'],
+                'uraian_perkap' => $excel['11'],
+                'kode_ruang' => $excel['12'],
+                'uraian_ruang' => $excel['13'],
+                'catatan' => $excel['14'],
+                'kondisi' => $excel['15'],
+                'nominal_aset' => $excel['16'],
+                'foto' => $excel['17'],
+                'tanggal_pengadaan' => $excel['18'],
+                'sumber_pengadaan' => $excel['19'],
+                'qr_code' => $excel['20'],
+            ];
+            $this->db->table('barang')->insert($data);
+        }
+
+        session()->setFlashdata('message', '<div class="alert alert-success">Data <strong>aset</strong> berhasil diimport!</div>');
+
+        return redirect()->to('/aset');
     }
 }

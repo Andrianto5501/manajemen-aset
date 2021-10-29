@@ -13,7 +13,7 @@
 
             <div class="d-inline">
                 <a href="/aset/add" class="btn btn-primary"><i class="fas fa-building me-1"></i> Tambah Barang</a>
-                <a href="/aser/import" class="btn btn-outline-success"><i class="fas fa-upload me-1"></i> Import Excel</a>
+                <a href="/aset/excel" class="btn btn-outline-success"><i class="fas fa-upload me-1"></i> Import Excel</a>
                 <a href="/aset/trash" class="btn btn-outline-danger"><i class="fas fa-trash-alt me-1"></i> Sampah</a>
             </div>
 
