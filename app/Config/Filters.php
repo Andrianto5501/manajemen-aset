@@ -69,6 +69,8 @@ class Filters extends BaseConfig
                 '/gedung/*',
                 '/ruang',
                 '/ruang/*',
+                '/aset',
+                '/aset/*',
             ]
         ]
     ];
