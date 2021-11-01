@@ -14,7 +14,10 @@
             <div class="d-inline">
                 <a href="/aset/add" class="btn btn-primary"><i class="fas fa-building me-1"></i> Tambah Barang</a>
                 <a href="/aset/excel" class="btn btn-outline-success"><i class="fas fa-upload me-1"></i> Import Excel</a>
-                <a href="/aset/trash" class="btn btn-outline-danger"><i class="fas fa-trash-alt me-1"></i> Sampah</a>
+
+                <?php if (session()->get('role') == 1 || session()->get('role') == 2) : ?>
+                    <a href="/aset/trash" class="btn btn-outline-danger"><i class="fas fa-trash-alt me-1"></i> Sampah</a>
+                <?php endif; ?>
             </div>
 
             <!-- Alert Message -->
@@ -50,9 +53,14 @@
                                         <td><?= $b['tanggal_pengadaan']; ?></td>
                                         <td><?= $b['user_penginput']; ?></td>
                                         <td>
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal<?= $b['id']; ?>">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
+
+                                            <?php if (session()->get('role') == 1 || session()->get('role') == 2) : ?>
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal<?= $b['id']; ?>">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            <?php endif; ?>
+
+
                                             <a href="/aset/edit/<?= $b['kode_barang']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#staticBackdrop">
                                                 <i class="fas fa-info-circle"></i>

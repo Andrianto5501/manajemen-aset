@@ -70,6 +70,15 @@ $routes->delete('/aset/(:num)', 'Aset::delete/$1');
 $routes->get('/aset/restore(:segment)', 'Aset::restore/$1');
 $routes->delete('/aset/destroy/(:any)', 'Aset::destroy/$1');
 
+// laporan
+$routes->get('/laporan', 'Report::index');
+
+// profil
+$routes->get('/profile', 'Profile::index');
+$routes->post('/profile', 'Profile::editprofile');
+$routes->get('/profile/changepassword', 'Profile::changepassword');
+$routes->post('/profile/change', 'Profile::change');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

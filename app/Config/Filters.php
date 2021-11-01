@@ -71,6 +71,10 @@ class Filters extends BaseConfig
                 '/ruang/*',
                 '/aset',
                 '/aset/*',
+                '/laporan',
+                '/laporan/*',
+                '/profile',
+                '/profile/*',
             ]
         ]
     ];

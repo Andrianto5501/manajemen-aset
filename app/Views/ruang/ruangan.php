@@ -44,9 +44,11 @@
                                             <td><?= $r['kode']; ?></td>
                                             <td><?= $r['nama']; ?></td>
                                             <td>
-                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal<?= $r['id']; ?>">
-                                                    <i class="fas fa-trash"></i> Hapus
-                                                </button>
+                                                <?php if (session()->get('role') == 1 || session()->get('role') == 2) : ?>
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal<?= $r['id']; ?>">
+                                                        <i class="fas fa-trash"></i> Hapus
+                                                    </button>
+                                                <?php endif; ?>
                                                 <a href="/ruang/edit/<?= $r['kode']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
                                             </td>
                                         </tr>

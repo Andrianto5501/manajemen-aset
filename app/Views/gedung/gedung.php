@@ -46,9 +46,11 @@
                                             <td><?= $g['nama']; ?></td>
                                             <td><?= $g['lokasi']; ?></td>
                                             <td>
-                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal<?= $g['id']; ?>">
-                                                    <i class="fas fa-trash"></i> Hapus
-                                                </button>
+                                                <?php if (session()->get('role') == 1 || session()->get('role') == 2) : ?>
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal<?= $g['id']; ?>">
+                                                        <i class="fas fa-trash"></i> Hapus
+                                                    </button>
+                                                <?php endif; ?>
                                                 <a href="/gedung/edit/<?= $g['kode']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
                                             </td>
                                         </tr>

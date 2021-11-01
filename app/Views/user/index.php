@@ -6,9 +6,12 @@
         <hr>
         <div class="row">
             <div class="col">
-                <div class="d-inline">
-                    <a href="/user/add" class="btn btn-primary"><i class="fas fa-user me-1"></i> Tambah User</a>
-                </div>
+
+                <?php if (session()->get('role') == 1) : ?>
+                    <div class="d-inline">
+                        <a href="/user/add" class="btn btn-primary"><i class="fas fa-user me-1"></i> Tambah User</a>
+                    </div>
+                <?php endif; ?>
 
                 <div class="mt-3">
                     <?= session()->getFlashdata('message'); ?>

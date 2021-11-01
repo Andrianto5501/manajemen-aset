@@ -10,10 +10,10 @@
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?= session()->get('name'); ?></a>
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?= session()->get('username'); ?></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/user/editprofile">Edit Profil</a></li>
-                <li><a class="dropdown-item" href="/user/changepassword">Ganti Password</a></li>
+                <li><a class="dropdown-item" href="/profile">Edit Profil</a></li>
+                <li><a class="dropdown-item" href="/profile/changepassword">Ganti Password</a></li>
                 <li>
                     <hr class="dropdown-divider" />
                 </li>

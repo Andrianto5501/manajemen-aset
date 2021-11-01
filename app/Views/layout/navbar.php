@@ -26,6 +26,8 @@
                             Data User
                         </a>
                     <?php endif; ?>
+
+
                     <a class="nav-link <?= ($title == "Data Aset") ? 'active' : '' ?>" href="/aset">
                         <div class="sb-nav-link-icon"><i class="fas fa-laptop"></i></div>
                         Data Aset
@@ -35,12 +37,10 @@
                         Data Ruangan
                     </a>
 
-                    <?php if (session()->get('role') == 1 || session()->get('role') == 2) : ?>
-                        <a class="nav-link <?= ($title == "Data Gedung") ? 'active' : ''; ?>" href="/gedung">
-                            <div class="sb-nav-link-icon"><i class="fas fa-building"></i></div>
-                            Data Gedung
-                        </a>
-                    <?php endif; ?>
+                    <a class="nav-link <?= ($title == "Data Gedung") ? 'active' : ''; ?>" href="/gedung">
+                        <div class="sb-nav-link-icon"><i class="fas fa-building"></i></div>
+                        Data Gedung
+                    </a>
                     <!-- End Data Master -->
 
                     <div class="sb-sidenav-menu-heading">Laporan</div>
@@ -51,14 +51,14 @@
 
                     <!-- My Profile -->
                     <div class="sb-sidenav-menu-heading">Profil</div>
-                    <a class="nav-link <?= ($title == "Edit Profil") ? 'active' : ''; ?>" href="/user/editprofile">
+                    <a class="nav-link <?= ($title == "Edit Profil") ? 'active' : ''; ?>" href="/profile">
                         <div class=" sb-nav-link-icon"><i class="fas fa-user-edit"></i></div>
                         Edit Profil
                     </a>
                     <!-- End My Profile -->
 
                     <!-- Ganti Password -->
-                    <a class="nav-link <?= ($title == "Ganti Password") ? 'active' : ''; ?>" href="/user/changepassword">
+                    <a class="nav-link <?= ($title == "Ganti Password") ? 'active' : ''; ?>" href="/profile/changepassword">
                         <div class="sb-nav-link-icon"><i class="fas fa-key"></i></div>
                         Ganti Password
                     </a>
@@ -66,7 +66,7 @@
 
                     <!-- Reset Password -->
                     <?php if (session()->get('role') == 1) : ?>
-                        <a class="nav-link <?= ($title == "Reset Password") ? 'active' : ''; ?>" href="<?= base_url('super/resetpassword'); ?>">
+                        <a class="nav-link <?= ($title == "Reset Password") ? 'active' : ''; ?>" href="<?= base_url('profile/resetpassword'); ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-sync-alt"></i></div>
                             Reset Password
                         </a>
