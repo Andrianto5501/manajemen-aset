@@ -165,8 +165,11 @@ class Profile extends BaseController
 
     public function resetPassword()
     {
-        $db      = \Config\Database::connect();
-        $builder = $db->table('user');
+        if (session()->get('role') != 1) {
+            return redirect()->to('/profile');
+        }
+
+        $builder = $this->db->table('user');
         $user = $builder->get()->getResultArray();
 
         $data = [

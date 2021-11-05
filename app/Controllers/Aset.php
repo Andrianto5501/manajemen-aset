@@ -99,10 +99,9 @@ class Aset extends BaseController
                 ]
             ],
             'kondisi_aset' => [
-                'rules' => 'trim|required|numeric',
+                'rules' => 'trim|required',
                 'errors' => [
-                    'required' => 'Kondisi Barang harus diisi!',
-                    'numeric' => 'Kondisi Barang harus berupa angka!'
+                    'required' => 'Kondisi Aset harus diisi!',
                 ]
             ],
             'uraian_aset' => [
@@ -372,7 +371,7 @@ class Aset extends BaseController
                 ]
             ]
         ])) {
-            return redirect()->to('/aset/edit')->withInput();
+            return redirect()->to('/aset/edit/' . $this->request->getVar('kode_barang'))->withInput();
         }
 
         $fileFoto = $this->request->getFile('image');

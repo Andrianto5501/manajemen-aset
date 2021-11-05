@@ -101,7 +101,7 @@ class Ruang extends BaseController
 
         session()->setFlashdata('message', '<div class="alert alert-success">Data <strong>ruangan</strong> berhasil diubah!</div>');
 
-        return redirect()->to('/ruang');
+        return redirect()->to('/ruang/edit/' . $this->request->getVar('kode'))->withInput();
     }
 
     public function delete($id)

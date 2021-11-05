@@ -12,7 +12,7 @@
         <div class="col">
 
             <div class="d-inline">
-                <a href="/aset/add" class="btn btn-primary"><i class="fas fa-building me-1"></i> Tambah Barang</a>
+                <a href="/aset/add" class="btn btn-primary"><i class="fas fa-laptop me-1"></i> Tambah Barang</a>
                 <a href="/aset/excel" class="btn btn-outline-success"><i class="fas fa-upload me-1"></i> Import Excel</a>
 
                 <?php if (session()->get('role') == 1 || session()->get('role') == 2) : ?>
@@ -36,7 +36,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Kode Barang</th>
+                                    <th>Kode Aset</th>
                                     <th>Kondisi</th>
                                     <th>Tanggal Pengadaan</th>
                                     <th>Penginput</th>
@@ -49,7 +49,7 @@
                                     <tr>
                                         <td><?= $i++ ?></td>
                                         <td><?= $b['kode_barang']; ?></td>
-                                        <td><?= $b['kondisi']; ?></td>
+                                        <td><?= $b['kondisi_aset']; ?></td>
                                         <td><?= $b['tanggal_pengadaan']; ?></td>
                                         <td><?= $b['user_penginput']; ?></td>
                                         <td>

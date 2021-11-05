@@ -26,8 +26,12 @@ class User extends BaseController
 
     public function create()
     {
+        if (session()->get('role') != 1) {
+            return redirect()->to('/user');
+        }
+
         $data = [
-            'title' => 'Data User',
+            'title' => 'Tambah Data User',
             'validation' => \Config\Services::validation(),
         ];
 
@@ -137,6 +141,10 @@ class User extends BaseController
 
     public function edit($nik)
     {
+        if (session()->get('role') != 1) {
+            return redirect()->to('/user');
+        }
+
         $data = [
             'title' => 'Ubah Data User',
             'validation' => \Config\Services::validation(),
@@ -228,6 +236,10 @@ class User extends BaseController
 
     public function delete($id)
     {
+        if (session()->get('role') != 1) {
+            return redirect()->to('/user');
+        }
+
         $user = $this->userModel->find($id);
 
         if ($user['image'] != 'default.jpg') {

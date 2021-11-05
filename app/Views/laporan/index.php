@@ -13,7 +13,7 @@
 
             <div class="d-inline">
                 <a href="/report/exportexcel" class="btn btn-success"><i class="fas fa-download me-1"></i> Download Excel</a>
-                <a href="/report/printpdf" class="btn btn-danger" target="_blank"><i class="fas fa-download me-1"></i> Download PDF</a>
+                <a href="/report/invoice" class="btn btn-danger" target="_blank"><i class="fas fa-download me-1"></i> Download PDF</a>
             </div>
 
             <div class="card mt-3">
@@ -27,7 +27,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Kode Barang</th>
+                                    <th>Kode Aset</th>
                                     <th>Kondisi</th>
                                     <th>Tanggal Pengadaan</th>
                                     <th>Penginput</th>
@@ -40,7 +40,7 @@
                                     <tr>
                                         <td><?= $i++ ?></td>
                                         <td><?= $b['kode_barang']; ?></td>
-                                        <td><?= $b['kondisi']; ?></td>
+                                        <td><?= $b['kondisi_aset']; ?></td>
                                         <td><?= $b['tanggal_pengadaan']; ?></td>
                                         <td><?= $b['user_penginput']; ?></td>
                                         <td>

@@ -12,7 +12,7 @@
             <div class="col">
 
                 <div class="d-inline">
-                    <a href="/ruang/add" class="btn btn-primary"><i class="fas fa-building me-1"></i> Tambah ruangan</a>
+                    <a href="/ruang/add" class="btn btn-primary"><i class="fas fa-door-open me-1"></i> Tambah ruangan</a>
                 </div>
 
                 <!-- Alert Message -->

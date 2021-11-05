@@ -33,7 +33,13 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="satuan">Satuan</label>
-                                <input type="text" class="form-control <?= ($validation->hasError('satuan')) ? 'is-invalid' : ''; ?>" name="satuan" id="satuan" value="<?= (old('satuan')) ? old('satuan') : $barang['satuan']; ?>">
+                                <select class="form-control <?= ($validation->hasError('satuan')) ? 'is-invalid' : ''; ?>" name="satuan" id="satuan">
+                                    <option value="">=== Pilih Satuan ===</option>
+                                    <option value="Unit" <?= ($barang['satuan']) ? 'selected' : old('satuan'); ?>>Unit</option>
+                                    <option value="Buah" <?= ($barang['satuan']) ? 'selected' : old('satuan'); ?>>Buah</option>
+                                    <option value="Set" <?= ($barang['satuan']) ? 'selected' : old('satuan'); ?>>Set</option>
+                                    <option value="Paket" <?= ($barang['satuan']) ? 'selected' : old('satuan'); ?>>Paket</option>
+                                </select>
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('satuan'); ?>
                                 </div>
@@ -84,7 +90,12 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="kondisi_aset">Kondisi Aset</label>
-                                <input type="text" class="form-control <?= ($validation->hasError('kondisi_aset')) ? 'is-invalid' : ''; ?>" name="kondisi_aset" id="kondisi_aset" value="<?= (old('kondisi_aset')) ? old('kondisi_aset') : $barang['kondisi_aset']; ?>">
+                                <select class="form-control <?= ($validation->hasError('kondisi_aset')) ? 'is-invalid' : ''; ?>" name="kondisi_aset" id="kondisi_aset">
+                                    <option value="">=== Pilih Kondisi ===</option>
+                                    <option value="Baik" <?= ($barang['kondisi_aset']) ? 'selected' : old('kondisi_aset'); ?>>Baik</option>
+                                    <option value="Kurang" <?= ($barang['kondisi_aset']) ? 'selected' : old('kondisi_aset'); ?>>Kurang</option>
+                                    <option value="Rusak" <?= ($barang['kondisi_aset']) ? 'selected' : old('kondisi_aset'); ?>>Rusak</option>
+                                </select>
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('kondisi_aset'); ?>
                                 </div>

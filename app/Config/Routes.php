@@ -72,6 +72,8 @@ $routes->delete('/aset/destroy/(:any)', 'Aset::destroy/$1');
 
 // laporan
 $routes->get('/laporan', 'Report::index');
+$routes->get('/laporan/invoice', 'Report::invoice');
+$routes->get('/laporan/testpdf', 'Report::testpdf');
 
 // profil
 $routes->get('/profile', 'Profile::index');

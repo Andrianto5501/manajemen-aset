@@ -103,7 +103,7 @@ class Gedung extends BaseController
                 ]
             ]
         ])) {
-            return redirect()->to('/gedung/edit')->withInput();
+            return redirect()->to('/gedung/edit/' . $this->request->getVar('kode'))->withInput();
         }
 
         $this->gedungModel->save([

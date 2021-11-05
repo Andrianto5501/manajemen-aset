@@ -97,72 +97,103 @@ class Report extends BaseController
         $writer->save('php://output');
     }
 
-    public function printPdf()
+    public function testPdf()
     {
-        // create new PDF document
-        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        return view('laporan/invoice', [
+            'barang' => $this->asetModel->findAll(),
+        ]);
+    }
 
-        // set document information
+    public function invoice()
+    {
+        // $data = [
+        //     'barang' => $this->asetModel->findAll(),
+        // ];
+        // $html = view('pdf', $data);
+
+        // $html = view('laporan/invoice', [
+        //     'barang' => $this->asetModel->findAll(),
+        // ]);
+
+        $barang = $this->asetModel->findAll();
+
+        $pdf = new TCPDF('L', PDF_UNIT, 'A4', true, 'UTF-8', false);
+
         $pdf->SetCreator(PDF_CREATOR);
-        $pdf->SetAuthor('Pengelola');
-        $pdf->SetTitle('PT Satria Dirgantara');
-        $pdf->SetSubject('Data Aset');
-        $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+        $pdf->SetAuthor('PT. Satria Dirgantara');
+        $pdf->SetTitle('Laporan Aset');
+        $pdf->SetSubject('PDF');
 
-        // set default header data
-        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE . ' 001', PDF_HEADER_STRING, array(0, 64, 255), array(0, 64, 128));
-        $pdf->setFooterData(array(0, 64, 0), array(0, 64, 128));
+        $pdf->setPrintHeader(false);
+        $pdf->setPrintFooter(false);
 
-        // set header and footer fonts
-        $pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-        $pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+        $pdf->AddPage();
 
-        // set default monospaced font
-        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+        $html = '<!DOCTYPE html>
+        <html lang="en">
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        // set margins
-        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+        <head>
+            <meta charset="UTF-8">
+            <title>Laporan Aset</title>
+            <style>
+                h1 {
+                    text-align: center;
+                    font-family: sans-serif;
+                }
+            </style>
+        </head>
 
-        // set auto page breaks
-        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+        <body>
+            <h1>PT. SATRIA DIRGANTARA</h1>
+            <hr>
+            <h3>Daftar Aset</h3>
+            <div style="overflow-x:auto;">
+            <table border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <th style="width:7%;"><b>No</b></th>
+                    <th><b>Kode Aset</b></th>
+                    <th><b>Kode Lokasi</b></th>
+                    <th><b>Kode Ruang</b></th>
+                    <th><b>Kondisi Aset</b></th>
+                    <th><b>Sumber</b></th>
+                    <th><b>Tahun</b></th>
+                    <th><b>QR Code</b></th>
+                </tr>
+        ';
 
-        // set image scale factor
-        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
-        // set some language-dependent strings (optional)
-        if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
-            require_once(dirname(__FILE__) . '/lang/eng.php');
-            $pdf->setLanguageArray($l);
+        $i = 1;
+        foreach ($barang as $b) {
+            $image = '/img/aset/qr/' . $b['qr_code'];
+            $html .= '
+                <tr>
+                    <td style="width:7%;">' . $i++ . '</td>
+                    <td>' . $b['kode_barang'] . '</td>
+                    <td>' . $b['kode_lokasi'] . '</td>
+                    <td>' . $b['kode_ruang'] . '</td>
+                    <td>' . $b['kondisi_aset'] . '</td>
+                    <td>' . $b['sumber_pengadaan'] . '</td>
+                    <td>' . $b['tanggal_pengadaan'] . '</td>
+                    <td><img src="' . $image . '"  alt="qr_code" width="50" height="50" /></td>
+                </tr>
+            ';
         }
 
-        // ---------------------------------------------------------
+        $html .= '
+                </table>
+                </div>
+        </body>
+        </html>
+        ';
 
-        // set default font subsetting mode
-        $pdf->setFontSubsetting(true);
+        $pdf->writeHTML($html, true, false, true, false, '');
 
-        // Set font
-        // dejavusans is a UTF-8 Unicode font, if you only need to
-        // print standard ASCII chars, you can use core fonts like
-        // helvetica or times to reduce file size.
-        $pdf->SetFont('dejavusans', '', 14, '', true);
+        $pdf->lastPage();
 
-        // Add a page
-        // This method has several options, check the source code documentation for more information.
-        $pdf->AddPage('L', 'A4');
+        $this->response->setContentType('application/pdf');
 
-        // set text shadow effect
-        $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 1, 'blend_mode' => 'Normal'));
-
-        // ---------------------------------------------------------
-
-        // Close and output PDF document
-        // This method has several options, check the source code documentation for more information.
-        $pdf->Output('example_001.pdf', 'I');
-
-        //============================================================+
-        // END OF FILE
-        //============================================================+
+        $pdf->Output('data_aset.pdf', 'I');
     }
 }
