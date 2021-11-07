@@ -56,11 +56,44 @@
             <div class="col-lg-6">
                 <div class="card mb-4">
                     <div class="card-header">
-                        <i class="fas fa-chart-bar me-1"></i>
-                        Bar Chart Example
+                        <i class="fas fa-chart-pie me-1"></i>
+                        Satuan Aset
                     </div>
-                    <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
-                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                    <div class="card-body"><canvas id="myDoughnutChart" width="100%" height="50"></canvas></div>
+                    <script>
+                        var xValues = ["Unit", "Buah", "Set", "Paket"];
+                        var yValues = [
+                            <?= $asetUnit; ?>,
+                            <?= $asetBuah; ?>,
+                            <?= $asetSet; ?>,
+                            <?= $asetPaket; ?>,
+                        ];
+                        var barColors = [
+                            "#00FFFF",
+                            "#DC143C",
+                            "#00008B",
+                            "#FF8C00"
+                        ];
+
+                        new Chart("myDoughnutChart", {
+                            type: "doughnut",
+                            data: {
+                                labels: xValues,
+                                datasets: [{
+                                    backgroundColor: barColors,
+                                    data: yValues
+                                }]
+                            },
+                            options: {
+                                title: {
+                                    display: true,
+                                    text: "World Wide Wine Production 2018"
+                                }
+                            }
+                        });
+                    </script>
+
+                    <div class="card-footer small text-muted">Terakhir diperbaharui : <?= max($lastUpdated); ?></div>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -71,24 +104,28 @@
                     </div>
                     <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
                     <script>
-                        window.onload = function() {
-                            var ctx = document.getElementById("myPieChart");
-                            var myPieChart = new Chart(ctx, {
-                                type: 'pie',
-                                data: {
-                                    labels: ["Baik", "Kurang", "Rusak"],
-                                    datasets: [{
-                                        data: [
-                                            <?= $asetBaik; ?>,
-                                            <?= $asetKurang; ?>,
-                                            <?= $asetRusak; ?>
-                                        ],
-                                        backgroundColor: ['#28a745', '#ffc107', '#dc3545']
-                                    }],
-                                },
-                            });
-                            chart.render();
-                        }
+                        var xValues = ["Baik", "Kurang", "Rusak"];
+                        var yValues = [
+                            <?= $asetBaik; ?>,
+                            <?= $asetKurang; ?>,
+                            <?= $asetRusak; ?>,
+                        ];
+                        var barColors = [
+                            "#0000FF",
+                            "#FFFF00",
+                            "#FF0000",
+                        ];
+
+                        new Chart("myPieChart", {
+                            type: "pie",
+                            data: {
+                                labels: xValues,
+                                datasets: [{
+                                    backgroundColor: barColors,
+                                    data: yValues
+                                }]
+                            },
+                        });
                     </script>
                     <div class="card-footer small text-muted">Terakhir diperbaharui : <?= max($lastUpdated); ?></div>
                 </div>

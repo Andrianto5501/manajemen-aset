@@ -27,6 +27,10 @@ class Home extends BaseController
             'asetBaik' => $this->asetModel->where('kondisi_aset', 'Baik')->countAllResults(),
             'asetKurang' => $this->asetModel->where('kondisi_aset', 'Kurang')->countAllResults(),
             'asetRusak' => $this->asetModel->where('kondisi_aset', 'Rusak')->countAllResults(),
+            'asetUnit' => $this->asetModel->where('satuan', 'Unit')->countAllResults(),
+            'asetBuah' => $this->asetModel->where('satuan', 'Buah')->countAllResults(),
+            'asetSet' => $this->asetModel->where('satuan', 'Set')->countAllResults(),
+            'asetPaket' => $this->asetModel->where('satuan', 'Paket')->countAllResults(),
             'lastUpdated' => $this->asetModel->findColumn('created_at'),
             'dataAsetDelete' => $this->asetModel->onlyDeleted()->countAllResults(),
         ];

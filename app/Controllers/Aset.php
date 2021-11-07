@@ -380,9 +380,13 @@ class Aset extends BaseController
             $image = \Config\Services::image()
                 ->withFile($fileFoto)
                 ->resize(400, 200, true, 'height')
-                ->save(FCPATH . '/img/aset/' . $fileFoto->getRandomName());
+                ->save(FCPATH . '/img/aset/' . $namaFoto);
 
-            unlink('img/aset/' . $this->request->getVar('old_image'));
+            if ($image != 'default.jpg') {
+                unlink('img/aset/' . $this->request->getVar('old_image'));
+            } else if ($namaFoto != 'default.jpg') {
+                unlink('img/aset/' . $this->request->getVar('old_image'));
+            }
         }
 
         $kode = $this->request->getVar('kode_barang');
