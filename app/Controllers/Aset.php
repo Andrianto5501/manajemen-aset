@@ -38,7 +38,7 @@ class Aset extends BaseController
         $data = [
             'title' => 'Tambah Data Aset',
             'validation' => \Config\Services::validation(),
-            'user' => $this->userModel->where('nik', session()->get('nik'))->first(),
+            // 'user' => $this->userModel->where('nik', session()->get('nik'))->first(),
         ];
 
         return view('aset/add', $data);
@@ -148,10 +148,9 @@ class Aset extends BaseController
                 ]
             ],
             'nominal_aset' => [
-                'rules' => 'trim|required|numeric',
+                'rules' => 'trim|required',
                 'errors' => [
                     'required' => 'Nominal harus diisi!',
-                    'numeric' => 'Nominal harus angka!',
                 ]
             ],
             'sumber_pengadaan' => [
@@ -217,7 +216,7 @@ class Aset extends BaseController
             'catatan' => $this->request->getVar('catatan'),
             'sumber_pengadaan' => $this->request->getVar('sumber_pengadaan'),
             'tanggal_pengadaan' => $this->request->getVar('tanggal_pengadaan'),
-            'user_penginput' => $this->request->getVar('user_penginput'),
+            'user_penginput' => session()->get('name'),
             'qr_code' => $qrCode->getData() . '.png',
             'foto' => $namaFoto,
         ]);
@@ -294,10 +293,9 @@ class Aset extends BaseController
                 ]
             ],
             'kondisi_aset' => [
-                'rules' => 'trim|required|numeric',
+                'rules' => 'trim|required',
                 'errors' => [
                     'required' => 'Kondisi Barang harus diisi!',
-                    'numeric' => 'Kondisi Barang harus berupa angka!'
                 ]
             ],
             'uraian_aset' => [
@@ -344,10 +342,9 @@ class Aset extends BaseController
                 ]
             ],
             'nominal_aset' => [
-                'rules' => 'trim|required|numeric',
+                'rules' => 'trim|required',
                 'errors' => [
                     'required' => 'Nominal harus diisi!',
-                    'numeric' => 'Nominal harus angka!',
                 ]
             ],
             'sumber_pengadaan' => [
@@ -416,7 +413,7 @@ class Aset extends BaseController
             'catatan' => $this->request->getVar('catatan'),
             'sumber_pengadaan' => $this->request->getVar('sumber_pengadaan'),
             'tanggal_pengadaan' => $this->request->getVar('tanggal_pengadaan'),
-            'user_penginput' => $this->request->getVar('user_penginput'),
+            'user_penginput' => session()->get('name'),
             'qr_code' => $qrCode->getData() . '.png',
             'foto' => $namaFoto,
         ]);

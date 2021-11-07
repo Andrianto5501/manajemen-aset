@@ -24,6 +24,10 @@ class Home extends BaseController
             'dataAdmin' => $this->userModel->where('role', 2)->countAllResults(),
             'dataUser' => $this->userModel->where('role', 3)->countAllResults(),
             'dataUser' => $this->userModel->where('role', 3)->countAllResults(),
+            'asetBaik' => $this->asetModel->where('kondisi_aset', 'Baik')->countAllResults(),
+            'asetKurang' => $this->asetModel->where('kondisi_aset', 'Kurang')->countAllResults(),
+            'asetRusak' => $this->asetModel->where('kondisi_aset', 'Rusak')->countAllResults(),
+            'lastUpdated' => $this->asetModel->findColumn('created_at'),
             'dataAsetDelete' => $this->asetModel->onlyDeleted()->countAllResults(),
         ];
 

@@ -11,7 +11,6 @@
                     <form action="/aset/<?= $barang['id']; ?>" method="POST" enctype="multipart/form-data">
                         <?= csrf_field(); ?>
                         <input type="hidden" name="_method" value="PUT">
-                        <input type="hidden" name="user_penginput" id="user_penginput" value="<?= $user['name']; ?>">
                         <input type="hidden" name="old_image" id="old_image" value="<?= $barang['foto']; ?>">
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -136,9 +135,14 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="nominal_aset">Nominal Aset</label>
-                                <input type="number" class="form-control <?= ($validation->hasError('nominal_aset')) ? 'is-invalid' : ''; ?>" name="nominal_aset" id="nominal_aset" value="<?= (old('nominal_aset')) ? old('nominal_aset') : $barang['nominal_aset']; ?>">
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('nominal_aset'); ?>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                                    </div>
+                                    <input type="text" class="form-control  <?= ($validation->hasError('nominal_aset')) ? 'is-invalid' : ''; ?>" name="nominal_aset" id="nominal_aset" value="<?= (old('nominal_aset')) ? old('nominal_aset') : $barang['nominal_aset']; ?>" aria-label="Nominal" aria-describedby="basic-addon1">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('nominal_aset'); ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -221,6 +225,27 @@
             imgPreview.src = e.target.result
         }
     }
+
+    function formatRupiah(angka, prefix) {
+        var number_string = angka.replace(/[^,\d]/g, '').toString(),
+            split = number_string.split(','),
+            sisa = split[0].length % 3,
+            rupiah = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+        if (ribuan) {
+            separator = sisa ? '.' : '';
+            rupiah += separator + ribuan.join('.');
+        }
+
+        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+        return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+    }
+
+    var tanpa_rupiah = document.getElementById('nominal_aset');
+    tanpa_rupiah.addEventListener('keyup', function(e) {
+        tanpa_rupiah.value = formatRupiah(this.value);
+    });
 </script>
 <?= $this->endSection(); ?>
 

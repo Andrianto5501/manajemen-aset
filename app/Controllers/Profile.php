@@ -77,8 +77,11 @@ class Profile extends BaseController
             // generate nama file random
             $imgName = $imgFile->getRandomName();
             // upload gambar
-            $imgFile->move('img', $imgName);
-            unlink('img/' . $this->request->getVar('oldImage'));
+            $imgFile->move('img/profile', $imgName);
+
+            if ($imgName != 'default.jpg') {
+                unlink('img/profile/' . $this->request->getVar('oldImage'));
+            }
         }
 
         $this->userModel->save([

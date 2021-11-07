@@ -97,24 +97,8 @@ class Report extends BaseController
         $writer->save('php://output');
     }
 
-    public function testPdf()
+    public function downloadAllPdf()
     {
-        return view('laporan/invoice', [
-            'barang' => $this->asetModel->findAll(),
-        ]);
-    }
-
-    public function invoice()
-    {
-        // $data = [
-        //     'barang' => $this->asetModel->findAll(),
-        // ];
-        // $html = view('pdf', $data);
-
-        // $html = view('laporan/invoice', [
-        //     'barang' => $this->asetModel->findAll(),
-        // ]);
-
         $barang = $this->asetModel->findAll();
 
         $pdf = new TCPDF('L', PDF_UNIT, 'A4', true, 'UTF-8', false);
@@ -151,7 +135,7 @@ class Report extends BaseController
             <hr>
             <h3>Daftar Aset</h3>
             <div style="overflow-x:auto;">
-            <table border="1" cellpadding="10" cellspacing="0">
+            <table border="1" align="center" cellpadding="10" cellspacing="0">
                 <tr>
                     <th style="width:7%;"><b>No</b></th>
                     <th><b>Kode Aset</b></th>

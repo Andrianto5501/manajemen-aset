@@ -39,7 +39,7 @@
                                     foreach ($users as $user) : ?>
                                         <tr>
                                             <td><?= $i++; ?></td>
-                                            <td><img src="/img/<?= $user['image']; ?>" alt="<?= $user['name']; ?>" class="img-thumbnail" style="width: 100px;"></td>
+                                            <td><img src="/img/profile/<?= $user['image']; ?>" alt="<?= $user['name']; ?>" class="img-thumbnail" style="width: 100px;"></td>
                                             <td><?= $user['name']; ?></td>
                                             <?php if ($user['role'] == 1) : ?>
                                                 <td>Super Admin</td>

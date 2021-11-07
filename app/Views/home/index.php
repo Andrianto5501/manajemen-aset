@@ -10,7 +10,7 @@
                 <div class="card bg-primary text-white mb-4">
                     <div class="card-body d-flex align-items-center justify-content-between">
                         Aset
-                        <i class="fas fa-folder-open"></i>
+                        <i class="fas fa-laptop"></i>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         Jumlah : <?= $dataAset; ?>
@@ -42,7 +42,7 @@
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-danger text-white mb-4">
                     <div class="card-body d-flex align-items-center justify-content-between">
-                        Backup
+                        Sampah
                         <i class="fas fa-trash-alt"></i>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
@@ -70,7 +70,27 @@
                         Kondisi Aset
                     </div>
                     <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
-                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                    <script>
+                        window.onload = function() {
+                            var ctx = document.getElementById("myPieChart");
+                            var myPieChart = new Chart(ctx, {
+                                type: 'pie',
+                                data: {
+                                    labels: ["Baik", "Kurang", "Rusak"],
+                                    datasets: [{
+                                        data: [
+                                            <?= $asetBaik; ?>,
+                                            <?= $asetKurang; ?>,
+                                            <?= $asetRusak; ?>
+                                        ],
+                                        backgroundColor: ['#28a745', '#ffc107', '#dc3545']
+                                    }],
+                                },
+                            });
+                            chart.render();
+                        }
+                    </script>
+                    <div class="card-footer small text-muted">Terakhir diperbaharui : <?= max($lastUpdated); ?></div>
                 </div>
             </div>
         </div>
