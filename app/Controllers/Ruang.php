@@ -16,6 +16,10 @@ class Ruang extends BaseController
 
     public function index()
     {
+        if (session('role') == 3) {
+            return redirect()->to('home');
+        }
+
         $data = [
             'title' => 'Data Ruangan',
             'ruang' => $this->ruangModel->findAll(),
@@ -26,6 +30,10 @@ class Ruang extends BaseController
 
     public function create()
     {
+        if (session('role') == 3) {
+            return redirect()->to('home');
+        }
+
         $data = [
             'title' => 'Tambah Data Ruangan',
             'validation' => \Config\Services::validation(),
@@ -65,6 +73,10 @@ class Ruang extends BaseController
 
     public function edit($kode)
     {
+        if (session('role') == 3) {
+            return redirect()->to('home');
+        }
+
         $data = [
             'title' => 'Ubah Data Ruangan',
             'validation' => \Config\Services::validation(),

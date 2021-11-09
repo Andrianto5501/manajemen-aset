@@ -16,6 +16,10 @@ class Gedung extends BaseController
 
     public function index()
     {
+        if (session('role') == 3) {
+            return redirect()->to('home');
+        }
+
         $data = [
             'title' => 'Data Gedung',
             'gedung' => $this->gedungModel->findAll(),
@@ -26,6 +30,10 @@ class Gedung extends BaseController
 
     public function create()
     {
+        if (session('role') == 3) {
+            return redirect()->to('home');
+        }
+
         $data = [
             'title' => 'Data Gedung',
             'validation' => \Config\Services::validation(),
@@ -72,6 +80,10 @@ class Gedung extends BaseController
 
     public function edit($kode)
     {
+        if (session('role') == 3) {
+            return redirect()->to('home');
+        }
+
         $data = [
             'title' => 'Ubah Data Gedung',
             'validation' => \Config\Services::validation(),

@@ -83,12 +83,6 @@
                                     backgroundColor: barColors,
                                     data: yValues
                                 }]
-                            },
-                            options: {
-                                title: {
-                                    display: true,
-                                    text: "World Wide Wine Production 2018"
-                                }
                             }
                         });
                     </script>

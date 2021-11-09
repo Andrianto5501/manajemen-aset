@@ -35,6 +35,10 @@ class Aset extends BaseController
 
     public function create()
     {
+        if (session('role') == 3) {
+            return redirect()->to('home');
+        }
+
         $data = [
             'title' => 'Tambah Data Aset',
             'validation' => \Config\Services::validation(),
@@ -228,6 +232,10 @@ class Aset extends BaseController
 
     public function edit($kode_barang)
     {
+        if (session('role') == 3) {
+            return redirect()->to('home');
+        }
+
         $data = [
             'title' => 'Ubah Data Aset',
             'validation' => \Config\Services::validation(),
@@ -436,6 +444,10 @@ class Aset extends BaseController
 
     public function trash()
     {
+        if (session('role') == 3) {
+            return redirect()->to('home');
+        }
+
         $data = [
             'title' => 'Sampah Aset',
             'barang' => $this->asetModel->onlyDeleted()->findAll(),
@@ -472,6 +484,10 @@ class Aset extends BaseController
 
     public function excel()
     {
+        if (session('role') == 3) {
+            return redirect()->to('home');
+        }
+
         $data = [
             'title' => 'Import Excel',
         ];

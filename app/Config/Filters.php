@@ -3,6 +3,7 @@
 namespace Config;
 
 use App\Filters\AuthFilter;
+use App\Filters\JwtFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -21,6 +22,7 @@ class Filters extends BaseConfig
         'toolbar'  => DebugToolbar::class,
         'honeypot' => Honeypot::class,
         'isLoggedIn' => AuthFilter::class,
+        'otentikasi' => JwtFilter::class,
     ];
 
     /**
@@ -61,6 +63,18 @@ class Filters extends BaseConfig
      * @var array
      */
     public $filters = [
+        'otentikasi' => [
+            'before' => [
+                'apiuser',
+                'apiuser/*',
+                'apiaset',
+                'apiaset/*',
+                'apiruang',
+                'apiruang/*',
+                'apigedung',
+                'apigedung/*',
+            ]
+        ],
         'isLoggedIn' => [
             'before' => [
                 '/user',

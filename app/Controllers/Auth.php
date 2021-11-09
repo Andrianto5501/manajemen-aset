@@ -2,10 +2,7 @@
 
 namespace App\Controllers;
 
-use OAuth2\Request;
-use App\Libraries\Oauth;
 use App\Models\UserModel;
-use CodeIgniter\API\ResponseTrait;
 use App\Controllers\BaseController;
 
 class Auth extends BaseController

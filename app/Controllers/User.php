@@ -16,6 +16,10 @@ class User extends BaseController
 
     public function index()
     {
+        if (session('role') == 3) {
+            return redirect()->to('home');
+        }
+
         $data = [
             'title' => 'Data User',
             'users' => $this->userModel->where('role !=', 1)->orderBy('role', 'asc')->findAll(),
@@ -28,6 +32,10 @@ class User extends BaseController
     {
         if (session()->get('role') != 1) {
             return redirect()->to('/user');
+        }
+
+        if (session('role') == 3) {
+            return redirect()->to('home');
         }
 
         $data = [
@@ -143,6 +151,10 @@ class User extends BaseController
     {
         if (session()->get('role') != 1) {
             return redirect()->to('/user');
+        }
+
+        if (session('role') == 3) {
+            return redirect()->to('home');
         }
 
         $data = [

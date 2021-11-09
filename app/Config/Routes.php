@@ -32,6 +32,7 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Auth::index');
+$routes->get('/auth', 'Auth::index');
 $routes->get('/auth/logout', 'Auth::logout');
 $routes->get('/home', 'Home::index', ['filter' => 'isLoggedIn']);
 
@@ -80,6 +81,11 @@ $routes->get('/profile', 'Profile::index');
 $routes->post('/profile', 'Profile::editprofile');
 $routes->get('/profile/changepassword', 'Profile::changepassword');
 $routes->post('/profile/change', 'Profile::change');
+
+/**
+ * REST API
+ */
+$routes->resource('apiuser');
 
 /*
  * --------------------------------------------------------------------
