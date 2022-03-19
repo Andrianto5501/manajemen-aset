@@ -35,6 +35,17 @@ class Aset extends BaseController
         return view('aset/index', $data);
     }
 
+    public function history($id)
+    {
+        $data = [
+            'title' => 'Riwayat Data Aset',
+            'barang' => $this->asetModel->where('id', $id)->first(),
+            'asetHistory' => $this->asetModel->getHistory($id),
+        ];
+
+        return view('aset/history', $data);
+    }
+
     public function create()
     {
         if (session('role') == 3) {

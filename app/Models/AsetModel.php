@@ -25,6 +25,11 @@ class AsetModel extends Model
             ->get()->getRowArray();
     }
 
+    public function getHistory($id)
+    {
+        return $this->builder("barang_history")->where("barangId", $id)->get()->getResultArray();
+    }
+
     function _multi_duplicate_insert($values)
     {
         $updatestr = array();
@@ -36,24 +41,26 @@ class AsetModel extends Model
         $first = $values[$temp[0]];
 
         foreach ($first as $key => $val) {
-            $updatestr[] = $key . " = VALUES(" . $key . ")";
+            if($key != $this->primaryKey) {
+                $updatestr[] = "`". $key . '` = VALUES(`' . $key . '`)';
+            }
             $keystr[]    = $key;
         }
 
         foreach ($values as $entry) {
             $valstr = array();
             foreach ($entry as $key => $val) {
-                $valstr[] = $val;
+                $valstr[] = !empty($val) || $val == 0 ? "'". str_replace("'", "\'", $val) . "'" : "NULL";
             }
-            $entries[] = "('" . implode("', '", str_replace("'", "\'", $valstr)) . "')";
+            $entries[] = "(" . implode(", ", $valstr) . ")";
         }
 
-        $sql  = "INSERT INTO " . $this->table . " (" . implode(', ', $keystr) . ") ";
+        $sql  = "INSERT INTO " . $this->table . " (`" . implode('`, `', $keystr) . "`) ";
 
         $sql .= "VALUES " . implode(', ', $entries);
-        $sql .= "ON DUPLICATE KEY UPDATE ".implode(', ',$updatestr);
-        // $sql .= "ON DUPLICATE KEY UPDATE kode_barang = kode_barang, no_aset = no_aset";
+        $sql .= "ON DUPLICATE KEY UPDATE " . implode(', ', $updatestr);
 
+        // return $sql;
         return $this->db->query($sql);
     }
 }

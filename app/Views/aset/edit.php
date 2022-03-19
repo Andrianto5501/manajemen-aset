@@ -187,7 +187,7 @@
                             <div class="col">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <img src="/img/aset/<?= $barang['foto']; ?>" class="img-thumbnail img-preview">
+                                        <img src="<?= base_url() ?>/img/aset/<?= $barang['foto']; ?>" class="img-thumbnail img-preview">
                                     </div>
                                     <div class="col-sm-9">
                                         <div class="custom-file">
