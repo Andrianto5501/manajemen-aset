@@ -12,12 +12,12 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?= session()->get('username'); ?></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/profile">Edit Profil</a></li>
-                <li><a class="dropdown-item" href="/profile/changepassword">Ganti Password</a></li>
+                <li><a class="dropdown-item" href="<?= site_url('profile') ?>">Edit Profil</a></li>
+                <li><a class="dropdown-item" href="<?= site_url('profile/changepassword') ?>">Ganti Password</a></li>
                 <li>
                     <hr class="dropdown-divider" />
                 </li>
-                <li><a class="dropdown-item" href="/auth/logout">Logout</a></li>
+                <li><a class="dropdown-item" href="<?= site_url('auth/logout') ?>">Logout</a></li>
             </ul>
         </li>
     </ul>

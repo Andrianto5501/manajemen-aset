@@ -24,7 +24,7 @@
                         <div class="form-group row justify-content-end">
                             <div class="col-sm-9">
                                 <button type="submit" class="btn btn-primary">Import</button>
-                                <a href="/aset" class="btn btn-secondary">Kembali</a>
+                                <a href="<?= site_url('aset') ?>" class="btn btn-secondary">Kembali</a>
                             </div>
                         </div>
                         <?= form_close(); ?>

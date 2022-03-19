@@ -87,7 +87,7 @@
                         });
                     </script>
 
-                    <div class="card-footer small text-muted">Terakhir diperbaharui : <?= max($lastUpdated); ?></div>
+                    <div class="card-footer small text-muted">Terakhir diperbaharui : <?= empty($lastUpdated) ? "-" : max($lastUpdated); ?></div>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -121,7 +121,7 @@
                             },
                         });
                     </script>
-                    <div class="card-footer small text-muted">Terakhir diperbaharui : <?= max($lastUpdated); ?></div>
+                    <div class="card-footer small text-muted">Terakhir diperbaharui : <?= empty($lastUpdated) ? "-" : max($lastUpdated) ?></div>
                 </div>
             </div>
         </div>

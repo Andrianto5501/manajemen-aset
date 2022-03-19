@@ -83,4 +83,9 @@ class Auth extends BaseController
     {
         return view('auth/block');
     }
+
+    public function generatePass($pass = "pass")
+    {
+        echo password_hash($pass, PASSWORD_DEFAULT);
+    }
 }

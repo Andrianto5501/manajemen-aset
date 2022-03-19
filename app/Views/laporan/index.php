@@ -5,15 +5,15 @@
     <h2 class="mt-4 mb-4"><?= $title; ?></h2>
     <hr>
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="<?= site_url('home') ?>">Dashboard</a></li>
         <li class="breadcrumb-item active" aria-current="page">Laporan Aset</li>
     </ol>
     <div class="row">
         <div class="col">
 
             <div class="d-inline">
-                <a href="/report/exportexcel" class="btn btn-success"><i class="fas fa-download me-1"></i> Download Excel</a>
-                <a href="/report/downloadallpdf" class="btn btn-danger" target="_blank"><i class="fas fa-download me-1"></i> Download PDF</a>
+                <a href="<?= site_url('report/exportexcel') ?>" class="btn btn-success"><i class="fas fa-download me-1"></i> Download Excel</a>
+                <a href="<?= site_url('report/downloadallpdf') ?>" class="btn btn-danger" target="_blank"><i class="fas fa-download me-1"></i> Download PDF</a>
             </div>
 
             <div class="card mt-3">

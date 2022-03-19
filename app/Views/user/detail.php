@@ -58,7 +58,7 @@
                                 </tbody>
                             </table>
 
-                            <a href="/user" class="btn btn-dark">Kembali</a>
+                            <a href="<?= site_url('user') ?>" class="btn btn-dark">Kembali</a>
                         </div>
                     </div>
                 </div>

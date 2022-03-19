@@ -15,7 +15,7 @@
 
                                 <?= session()->getFlashdata('message'); ?>
 
-                                <form method="POST" action="/auth/login">
+                                <form method="POST" action="<?= site_url('auth/login') ?>">
                                     <?= csrf_field(); ?>
                                     <div class="form-floating mb-3 mt-2">
                                         <input class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?>" name="username" id="username" type="text" placeholder="name@example.com" autofocus value="<?= old('username'); ?>" />

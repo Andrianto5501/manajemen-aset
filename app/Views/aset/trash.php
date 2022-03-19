@@ -5,15 +5,15 @@
     <h2 class="mt-4 mb-4"><?= $title; ?></h2>
     <hr>
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="/aset/">Aset</a></li>
+        <li class="breadcrumb-item"><a href="<?= site_url('home') ?>">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="<?= site_url('aset') ?>">Aset</a></li>
         <li class="breadcrumb-item active" aria-current="page">Sampah Barang</li>
     </ol>
     <div class="row">
         <div class="col">
 
             <div class="d-inline">
-                <a href="/aset" class="btn btn-secondary">Kembali</a>
+                <a href="<?= site_url('aset') ?>" class="btn btn-secondary">Kembali</a>
             </div>
 
             <!-- Alert Message -->

@@ -9,7 +9,7 @@
 
                 <?php if (session()->get('role') == 1) : ?>
                     <div class="d-inline">
-                        <a href="/user/add" class="btn btn-primary"><i class="fas fa-user me-1"></i> Tambah User</a>
+                        <a href="<?= site_url('user/add') ?>" class="btn btn-primary"><i class="fas fa-user me-1"></i> Tambah User</a>
                     </div>
                 <?php endif; ?>
 
@@ -53,11 +53,11 @@
                                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal<?= $user['id']; ?>">
                                                         <i class="fas fa-trash"></i> Hapus
                                                     </button>
-                                                    <a href="/user/edit/<?= $user['nik']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                                    <a href="<?= site_url('user/edit/' . $user['nik']); ?>" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
                                                 <?php elseif (session('role') == 2) : ?>
                                                     <!-- No Delete & Edit -->
                                                 <?php endif; ?>
-                                                <a href="/user/detail/<?= $user['nik']; ?>" class="btn btn-info"><i class="fas fa-info"></i> Detail</a>
+                                                <a href="<?= site_url('user/detail/' . $user['nik']); ?>" class="btn btn-info"><i class="fas fa-info"></i> Detail</a>
                                             </td>
                                         </tr>
 

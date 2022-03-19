@@ -5,14 +5,14 @@
     <h2 class="mt-4 mb-4"><?= $title; ?></h1>
         <hr>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/super">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="<?= site_url('super') ?>">Dashboard</a></li>
             <li class="breadcrumb-item active" aria-current="page">Ruangan</li>
         </ol>
         <div class="row">
             <div class="col">
 
                 <div class="d-inline">
-                    <a href="/ruang/add" class="btn btn-primary"><i class="fas fa-door-open me-1"></i> Tambah ruangan</a>
+                    <a href="<?= site_url('ruang/add') ?>" class="btn btn-primary"><i class="fas fa-door-open me-1"></i> Tambah ruangan</a>
                 </div>
 
                 <!-- Alert Message -->
@@ -49,7 +49,7 @@
                                                         <i class="fas fa-trash"></i> Hapus
                                                     </button>
                                                 <?php endif; ?>
-                                                <a href="/ruang/edit/<?= $r['kode']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                                <a href="<?= site_url('ruang/edit/' . $r['kode']); ?>" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
                                             </td>
                                         </tr>
 

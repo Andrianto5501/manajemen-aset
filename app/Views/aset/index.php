@@ -5,7 +5,7 @@
     <h2 class="mt-4 mb-4"><?= $title; ?></h2>
     <hr>
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="<?= site_url('home') ?>">Dashboard</a></li>
         <li class="breadcrumb-item active" aria-current="page">Barang</li>
     </ol>
     <div class="row">
@@ -13,9 +13,10 @@
 
             <div class="d-inline">
                 <?php if (session()->get('role') == 1 || session()->get('role') == 2) : ?>
-                    <a href="/aset/add" class="btn btn-primary"><i class="fas fa-laptop me-1"></i> Tambah Barang</a>
-                    <a href="/aset/trash" class="btn btn-outline-danger"><i class="fas fa-trash-alt me-1"></i> Sampah</a>
-                    <a href="/aset/excel" class="btn btn-outline-success"><i class="fas fa-upload me-1"></i> Import Excel</a>
+                    <a href="<?= site_url('aset/add') ?>" class="btn btn-primary"><i class="fas fa-laptop me-1"></i> Tambah Barang</a>
+                    <a href="<?= site_url('aset/trash') ?>" class="btn btn-outline-danger"><i class="fas fa-trash-alt me-1"></i> Sampah</a>
+                    <a href="<?= site_url('aset/excel') ?>" class="btn btn-outline-success"><i class="fas fa-upload me-1"></i> Import Excel</a>
+                    <a href="<?= site_url('aset/templateexcel') ?>" class="ml-2"><i class="fas fa-download me-1"></i> Unduh Template Excel</a>
                 <?php endif; ?>
             </div>
 
@@ -53,23 +54,23 @@
                                         <td><?= $b['user_penginput']; ?></td>
                                         <td>
                                             <?php if (session()->get('role') == 1 || session()->get('role') == 2) : ?>
-                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal<?= $b['id']; ?>">
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete<?= $b['id']; ?>">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
-                                                <a href="/aset/edit/<?= $b['kode_barang']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                                <a href="<?= site_url('aset/edit/' . $b['kode_barang']); ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                             <?php endif; ?>
 
-                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal<?= $b['nomor']; ?>">
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalInfo<?= $b['id']; ?>">
                                                 <i class="fas fa-info-circle"></i>
                                             </button>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<?= $b['kode_barang']; ?>">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalQR<?= $b['id']; ?>">
                                                 <i class="fas fa-qrcode"></i>
                                             </button>
                                         </td>
                                     </tr>
 
                                     <!-- Modal Delete -->
-                                    <div class="modal fade" id="exampleModal<?= $b['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="modalDelete<?= $b['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -94,7 +95,7 @@
                                     </div>
 
                                     <!-- Modal Detail -->
-                                    <div class="modal fade" id="exampleModal<?= $b['nomor']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="modalInfo<?= $b['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -178,7 +179,7 @@
                                     </div>
 
                                     <!-- Modal QR -->
-                                    <div class="modal fade" id="exampleModal<?= $b['kode_barang']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="modalQR<?= $b['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">

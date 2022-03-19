@@ -13,6 +13,7 @@ class OtentikasiModel extends Model
 
     function getUsername($username)
     {
+        $db = \Config\Database::connect();
         $builder = $this->table('otentikasi');
         $data = $builder->where('username', $username)->first();
         if (!$data) {

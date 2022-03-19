@@ -8,7 +8,7 @@
         <div class="col-lg-8">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <form action="/aset" method="POST" enctype="multipart/form-data">
+                    <form action="<?= site_url("aset/save") ?>" method="POST" enctype="multipart/form-data">
                         <?= csrf_field(); ?>
                         <div class="form-row">
                             <div class="form-group col-md-6">

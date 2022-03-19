@@ -12,7 +12,7 @@
                     <?php endif; ?>
 
                     <!-- Dashboard -->
-                    <a class="nav-link <?= ($title == "Dashboard") ? 'active' : ''; ?>" href="/home">
+                    <a class="nav-link <?= ($title == "Dashboard") ? 'active' : ''; ?>" href="<?= site_url('home') ?>">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Dashboard
                     </a>
@@ -21,25 +21,25 @@
                     <!-- Data Master -->
                     <div class="sb-sidenav-menu-heading">Master Data</div>
                     <?php if (session()->get('role') == 1 || session()->get('role') == 2) : ?>
-                        <a class="nav-link <?= ($title == "Data User") ? 'active' : ''; ?>" href="/user">
+                        <a class="nav-link <?= ($title == "Data User") ? 'active' : ''; ?>" href="<?= site_url('user') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                             Data User
                         </a>
                     <?php endif; ?>
 
 
-                    <a class="nav-link <?= ($title == "Data Aset") ? 'active' : '' ?>" href="/aset">
+                    <a class="nav-link <?= ($title == "Data Aset") ? 'active' : '' ?>" href="<?= site_url('aset') ?>">
                         <div class="sb-nav-link-icon"><i class="fas fa-laptop"></i></div>
                         Data Aset
                     </a>
 
                     <?php if (session()->get('role') == 1 || session()->get('role') == 2) : ?>
-                        <a class="nav-link <?= ($title ==  "Data Ruangan") ? 'active' : ''; ?>" href="/ruang">
+                        <a class="nav-link <?= ($title ==  "Data Ruangan") ? 'active' : ''; ?>" href="<?= site_url('ruang') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-door-open"></i></div>
                             Data Ruangan
                         </a>
 
-                        <a class="nav-link <?= ($title == "Data Gedung") ? 'active' : ''; ?>" href="/gedung">
+                        <a class="nav-link <?= ($title == "Data Gedung") ? 'active' : ''; ?>" href="<?= site_url('gedung') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-building"></i></div>
                             Data Gedung
                         </a>
@@ -47,21 +47,21 @@
                     <!-- End Data Master -->
 
                     <div class="sb-sidenav-menu-heading">Laporan</div>
-                    <a class="nav-link <?= ($title == "Laporan Aset") ? 'active' : ''; ?>" href="/laporan">
+                    <a class="nav-link <?= ($title == "Laporan Aset") ? 'active' : ''; ?>" href="<?= site_url('laporan') ?>">
                         <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                         Laporan Aset
                     </a>
 
                     <!-- My Profile -->
                     <div class="sb-sidenav-menu-heading">Profil</div>
-                    <a class="nav-link <?= ($title == "Edit Profil") ? 'active' : ''; ?>" href="/profile">
+                    <a class="nav-link <?= ($title == "Edit Profil") ? 'active' : ''; ?>" href="<?= site_url('profile') ?>">
                         <div class=" sb-nav-link-icon"><i class="fas fa-user-edit"></i></div>
                         Edit Profil
                     </a>
                     <!-- End My Profile -->
 
                     <!-- Ganti Password -->
-                    <a class="nav-link <?= ($title == "Ganti Password") ? 'active' : ''; ?>" href="/profile/changepassword">
+                    <a class="nav-link <?= ($title == "Ganti Password") ? 'active' : ''; ?>" href="<?= site_url('profile') ?>/changepassword">
                         <div class="sb-nav-link-icon"><i class="fas fa-key"></i></div>
                         Ganti Password
                     </a>
@@ -78,7 +78,7 @@
 
                     <hr style="height:1px; border-width:0; color:gray; background-color:gray; margin-left: 15px; margin-right: 25px;">
 
-                    <a class="nav-link" href="/auth/logout">
+                    <a class="nav-link" href="<?= site_url('auth') ?>/logout">
                         <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
                         Keluar
                     </a>

@@ -7,8 +7,10 @@ use App\Models\UserModel;
 use Endroid\QrCode\QrCode;
 use App\Controllers\BaseController;
 use Endroid\QrCode\Writer\PngWriter;
+use Exception;
 use PhpOffice\PhpSpreadsheet\Reader\Xls;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class Aset extends BaseController
 {
@@ -178,6 +180,8 @@ class Aset extends BaseController
                 ]
             ]
         ])) {
+            // return $this->response->setJSON(["message" => $this->validator->getErrors()], 400);
+            session()->setFlashdata('message', '<div class="alert alert-success">Data <strong>aset</strong> Belum Valid!</div>');
             return redirect()->to('/aset/add')->withInput();
         }
 
@@ -198,10 +202,10 @@ class Aset extends BaseController
         $writer = new PngWriter();
         $qrCode = QrCode::create($kode)->setSize(300);
         $result = $writer->write($qrCode);
-        header('Content-Type: ' . $result->getMimeType());
+        // header('Content-Type: ' . $result->getMimeType());
         $result->saveToFile(FCPATH . '/img/aset/qr/' . $qrCode->getData() . '.png');
 
-        $this->asetModel->save([
+        $dataSave = [
             'nomor' => $this->request->getVar('nomor'),
             'sub_nomor' => $this->request->getVar('sub_nomor'),
             'satuan' => $this->request->getVar('satuan'),
@@ -223,11 +227,19 @@ class Aset extends BaseController
             'user_penginput' => session()->get('name'),
             'qr_code' => $qrCode->getData() . '.png',
             'foto' => $namaFoto,
-        ]);
+        ];
+
+        $cekcAset = $this->asetModel->getByKBNA($kode, $this->request->getVar("no_aset"));
+        if (!empty($cekcAset)) {
+            $this->asetModel->update($cekcAset['id'], $dataSave);
+        } else {
+            $this->asetModel->save($dataSave);
+        }
 
         session()->setFlashdata('message', '<div class="alert alert-success">Data <strong>aset</strong> berhasil ditambahkan!</div>');
 
-        return redirect()->to('/aset');
+        return redirect()->to('aset');
+        // return $this->response->setJSON([ "data" => $cekcAset, "save" => $dataSave], 200);
     }
 
     public function edit($kode_barang)
@@ -510,38 +522,55 @@ class Aset extends BaseController
 
         $sheet = $spreadsheet->getActiveSheet()->toArray();
 
-        foreach ($sheet as $x => $excel) {
+        $dataInsert = [];
+        foreach ($sheet as $x => $rowCell) {
             if ($x == 0) {
                 continue;
             }
 
-            $data = [
-                'nomor' => $excel['1'],
-                'sub_nomor' => $excel['2'],
-                'satuan' => $excel['3'],
-                'kode_barang' => $excel['4'],
-                'no_aset' => $excel['5'],
-                'tercatat' => $excel['6'],
-                'kode_lokasi' => $excel['7'],
-                'kode_perkap' => $excel['8'],
-                'kondisi_aset' => $excel['9'],
-                'uraian_aset' => $excel['10'],
-                'uraian_perkap' => $excel['11'],
-                'kode_ruang' => $excel['12'],
-                'uraian_ruang' => $excel['13'],
-                'catatan' => $excel['14'],
-                'kondisi' => $excel['15'],
-                'nominal_aset' => $excel['16'],
-                'foto' => $excel['17'],
-                'tanggal_pengadaan' => $excel['18'],
-                'sumber_pengadaan' => $excel['19'],
-                'qr_code' => $excel['20'],
-            ];
-            $this->db->table('barang')->insert($data);
+            if (($rowCell['3'] ?? "") != "" && ($rowCell['4'] ?? "") != "") {
+                $dataInsert[] = [
+                    'nomor' => $rowCell['0'] ?? "",
+                    'sub_nomor' => $rowCell['1'] ?? "",
+                    'satuan' => $rowCell['2'] ?? "",
+                    'kode_barang' => $rowCell['3'] ?? "",
+                    'no_aset' => $rowCell['4'] ?? "",
+                    'tercatat' => $rowCell['5'] ?? "",
+                    'kode_lokasi' => $rowCell['6'] ?? "",
+                    'kode_perkap' => $rowCell['7'] ?? "",
+                    'kondisi_aset' => $rowCell['8'] ?? "",
+                    'uraian_aset' => $rowCell['9'] ?? "",
+                    'uraian_perkap' => $rowCell['10'] ?? "",
+                    'kode_ruang' => $rowCell['11'] ?? "",
+                    'uraian_ruang' => $rowCell['12'] ?? "",
+                    'catatan' => $rowCell['13'] ?? "",
+                    'kondisi' => $rowCell['14'] ?? "",
+                    'nominal_aset' => $rowCell['15'] ?? "",
+                    'foto' => $rowCell['16'] ?? "",
+                    'tanggal_pengadaan' => $rowCell['17'] ?? "",
+                    'sumber_pengadaan' => $rowCell['18'] ?? "",
+                    'qr_code' => $rowCell['19'] ?? "",
+                ];
+            }
         }
 
-        session()->setFlashdata('message', '<div class="alert alert-success">Data <strong>aset</strong> berhasil diimport!</div>');
+        // echo "<pre>";
+        // print_r($dataInsert);
+
+        if (!empty($dataInsert)) {
+            $asetModel = new AsetModel();
+            $asetModel->_multi_duplicate_insert($dataInsert);
+            session()->setFlashdata('message', '<div class="alert alert-success">Data <strong>aset</strong> berhasil diimport!</div>');
+        } else {
+            session()->setFlashdata('message', '<div class="alert alert-danger">Data <strong>aset</strong> gagal diimport!</div>');
+        }
+
 
         return redirect()->to('/aset');
+    }
+
+    public function templateexcel()
+    {
+        return $this->response->download(FCPATH . '/assets/template/sampleImportAset.xlsx', null);
     }
 }
