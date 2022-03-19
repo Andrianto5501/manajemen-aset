@@ -8,8 +8,9 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-5">
                         <div class="card shadow-lg border-0 rounded-lg mt-5">
-                            <div class="card-header">
-                                <h3 class="text-center font-weight-light my-3"><?= $title; ?></h3>
+                            <div class="card-header text-center">
+                                <!-- <h3 class="text-center font-weight-light my-3"><?= $title; ?></h3> -->
+                                <img src="<?= base_url() ?>/img/logo-light.png" alt="Kejari Purwokerto" height="75" />
                             </div>
                             <div class="card-body mb-2">
 

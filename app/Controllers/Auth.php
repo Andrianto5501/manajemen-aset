@@ -14,7 +14,7 @@ class Auth extends BaseController
         }
 
         $data = [
-            'title' => 'PT. Satria Dirgantara',
+            'title' => 'Kejaksaan Negeri Purwokerto',
             'validation' => \Config\Services::validation(),
         ];
 
