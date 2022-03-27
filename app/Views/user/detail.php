@@ -9,7 +9,7 @@
             <div class="card-body shadow-lg">
                 <div class="row no-gutters">
                     <div class="col-md-4">
-                        <img src="/img/<?= $user['image']; ?>" alt="<?= $user['name']; ?>" class="card-img">
+                        <img src="<?= base_url() ?>/img/<?= $user['image']; ?>" alt="<?= $user['name']; ?>" class="card-img">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">

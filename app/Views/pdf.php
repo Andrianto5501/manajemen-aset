@@ -41,7 +41,7 @@
                 <td><?= $b['kondisi_aset']; ?></td>
                 <td><?= $b['sumber_pengadaan']; ?></td>
                 <td><?= $b['tanggal_pengadaan']; ?></td>
-                <td><img src="/img/aset/qr/<?= $b['qr_code'] . '.png'; ?>" width="100px"></td>
+                <td><img src="<?= base_url() ?>/img/aset/qr/<?= $b['qr_code'] . '.png'; ?>" width="100px"></td>
             </tr>
         <?php endforeach; ?>
     </table>

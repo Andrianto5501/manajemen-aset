@@ -12,14 +12,14 @@
                         <?= csrf_field(); ?>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="nomor">Nomor</label>
+                                <label for="nomor">Kel</label>
                                 <input type="number" class="form-control <?= ($validation->hasError('nomor')) ? 'is-invalid' : ''; ?>" name="nomor" id="nomor" value="<?= old('nomor'); ?>" placeholder="Nomor...">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('nomor'); ?>
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="sub_nomor">Sub Nomor</label>
+                                <label for="sub_nomor">Skel</label>
                                 <input type="number" class="form-control <?= ($validation->hasError('sub_nomor')) ? 'is-invalid' : ''; ?>" name="sub_nomor" id="sub_nomor" value="<?= old('sub_nomor'); ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('sub_nomor'); ?>
@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="kode_barang">Kode Barang</label>
+                                <label for="kode_barang">kd_barang</label>
                                 <input type="text" class="form-control <?= ($validation->hasError('kode_barang')) ? 'is-invalid' : ''; ?>" name="kode_barang" id="kode_barang" value="<?= old('kode_barang'); ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('kode_barang'); ?>
@@ -52,7 +52,7 @@
                         <hr>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="no_aset">Nomor Aset</label>
+                                <label for="no_aset">no_aset</label>
                                 <input type="number" class="form-control <?= ($validation->hasError('no_aset')) ? 'is-invalid' : ''; ?>" name="no_aset" id="no_aset" value="<?= old('no_aset'); ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('no_aset'); ?>
@@ -69,14 +69,14 @@
                         <hr>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="kode_lokasi">Kode Lokasi</label>
+                                <label for="kode_lokasi">kd_lokasi</label>
                                 <input type="text" class="form-control <?= ($validation->hasError('kode_lokasi')) ? 'is-invalid' : ''; ?>" name="kode_lokasi" id="kode_lokasi" value="<?= old('kode_lokasi'); ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('kode_lokasi'); ?>
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="kode_perkap">Kode Perkap</label>
+                                <label for="kode_perkap">kd_perk</label>
                                 <input type="text" class="form-control <?= ($validation->hasError('kode_perkap')) ? 'is-invalid' : ''; ?>" name="kode_perkap" id="kode_perkap" value="<?= old('kode_perkap'); ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('kode_perkap'); ?>
@@ -86,7 +86,7 @@
                         <hr>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="kondisi_aset">Kondisi Aset</label>
+                                <label for="kondisi_aset">kondisi</label>
                                 <select class="form-control <?= ($validation->hasError('kondisi_aset')) ? 'is-invalid' : ''; ?>" name="kondisi_aset" id="kondisi_aset">
                                     <option value="">=== Pilih Kondisi ===</option>
                                     <option value="Baik" <?= (old('kondisi_aset') == 'Baik') ? 'selected' : ''; ?>>Baik</option>
@@ -98,7 +98,7 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="uraian_aset">Uraian Aset</label>
+                                <label for="uraian_aset">urai</label>
                                 <input type="text" class="form-control <?= ($validation->hasError('uraian_aset')) ? 'is-invalid' : ''; ?>" name="uraian_aset" id="uraian_aset" value="<?= old('uraian_aset'); ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('uraian_aset'); ?>
@@ -108,14 +108,14 @@
                         <hr>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="uraian_perkap">Uraian Perkap</label>
+                                <label for="uraian_perkap">urperk</label>
                                 <input type="text" class="form-control <?= ($validation->hasError('uraian_perkap')) ? 'is-invalid' : ''; ?>" name="uraian_perkap" id="uraian_perkap" value="<?= old('uraian_perkap'); ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('uraian_perkap'); ?>
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="kode_ruang">Kode Ruang</label>
+                                <label for="kode_ruang">kd_ruang</label>
                                 <input type="text" class="form-control <?= ($validation->hasError('kode_ruang')) ? 'is-invalid' : ''; ?>" name="kode_ruang" id="kode_ruang" value="<?= old('kode_ruang'); ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('kode_ruang'); ?>
@@ -125,14 +125,14 @@
                         <hr>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="uraian_ruang">Uraian Ruang</label>
+                                <label for="uraian_ruang">ur_ruang</label>
                                 <input type="text" class="form-control <?= ($validation->hasError('uraian_ruang')) ? 'is-invalid' : ''; ?>" name="uraian_ruang" id="uraian_ruang" value="<?= old('uraian_ruang'); ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('uraian_ruang'); ?>
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="nominal_aset">Nominal Aset</label>
+                                <label for="nominal_aset">sakhir</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">Rp</span>
@@ -163,7 +163,7 @@
                         </div>
                         <hr>
                         <div class="form-group row">
-                            <label for="kondisi">Kondisi</label>
+                            <label for="kondisi">kondi</label>
                             <div class="col">
                                 <textarea type="text" class="form-control <?= ($validation->hasError('kondisi')) ? 'is-invalid' : ''; ?>" name="kondisi" id="kondisi"><?= old('kondisi'); ?></textarea>
                                 <div class="invalid-feedback">
@@ -172,7 +172,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="catatan">Catatan</label>
+                            <label for="catatan">catat</label>
                             <div class="col">
                                 <textarea type="text" class="form-control <?= ($validation->hasError('catatan')) ? 'is-invalid' : ''; ?>" name="catatan" id="catatan"><?= old('catatan'); ?></textarea>
                                 <div class="invalid-feedback">
@@ -185,7 +185,7 @@
                             <div class="col">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <img src="/img/aset/default.jpg" class="img-thumbnail img-preview">
+                                        <img src="<?= base_url() ?>/img/aset/default.jpg" class="img-thumbnail img-preview">
                                     </div>
                                     <div class="col-sm-9">
                                         <div class="custom-file">

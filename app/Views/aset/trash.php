@@ -32,10 +32,12 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Kode Barang</th>
-                                    <th>Kondisi</th>
-                                    <th>Tanggal Pengadaan</th>
-                                    <th>Penginput</th>
+                                    <th>Kel</th>
+                                    <th>SKel</th>
+                                    <th>kd_brg</th>
+                                    <th>urai</th>
+                                    <th>ur_ruang</th>
+                                    <th>kondisi</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -44,18 +46,20 @@
                                 foreach ($barang as $b) : ?>
                                     <tr>
                                         <td><?= $i++ ?></td>
+                                        <td><?= $b['nomor']; ?></td>
+                                        <td><?= $b['sub_nomor']; ?></td>
                                         <td><?= $b['kode_barang']; ?></td>
+                                        <td><?= $b['uraian_aset']; ?></td>
+                                        <td><?= $b['uraian_ruang']; ?></td>
                                         <td><?= $b['kondisi']; ?></td>
-                                        <td><?= $b['tanggal_pengadaan']; ?></td>
-                                        <td><?= $b['user_penginput']; ?></td>
                                         <td>
-                                            <form action="/aset/restore/<?= $b['id']; ?>" method="post" class="d-inline">
+                                            <form action="<?= site_url("aset/restore/"). $b['id'] ?>" method="post" class="d-inline">
                                                 <?= csrf_field(); ?>
                                                 <button type="submit" class="btn btn-info">
                                                     <i class="fas fa-trash-restore"></i> Restore
                                                 </button>
                                             </form>
-                                            <button type=" button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal<?= $b['kode_barang']; ?>">
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal<?= $b['kode_barang']; ?>">
                                                 <i class="fas fa-trash-alt"></i> Hapus Permanen
                                             </button>
                                         </td>

@@ -33,14 +33,16 @@
                 <!-- Table -->
                 <div class="card-body shadow-lg">
                     <div class="responsive">
-                        <table class="table table-bordered text-center" id="tableAsset">
+                        <table class="table table-stripped text-center" id="tableAsset">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Kode Aset</th>
-                                    <th>Kondisi</th>
-                                    <th>Tanggal Pengadaan</th>
-                                    <th>Penginput</th>
+                                    <th>Kel</th>
+                                    <th>SKel</th>
+                                    <th>kd_brg</th>
+                                    <th>urai</th>
+                                    <th>ur_ruang</th>
+                                    <th>kondisi</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -91,71 +93,110 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <p><b>Nomor</b></p>
-                        <p><b>Sub Nomor</b></p>
-                        <p><b>Satuan</b></p>
-                        <p><b>Kode Barang</b></p>
-                        <p><b>Tercatat</b></p>
-                        <p><b>No Aset</b></p>
-                        <p><b>Kode Lokasi</b></p>
-                        <p><b>Kode Perkap</b></p>
-                        <p><b>Kondisi Aset</b></p>
-                        <p><b>Uraian Aset</b></p>
-                        <p><b>Uraian Perkap</b></p>
-                        <p><b>Kode Ruang</b></p>
-                        <p><b>Uraian Ruang</b></p>
-                        <p><b>Catatan</b></p>
-                        <p><b>Kondisi</b></p>
-                        <p><b>Nominal</b></p>
-                        <p><b>Tanggal Pengadaan</b></p>
-                        <p><b>Sumber Pengadaan</b></p>
-                        <p><b>Foto</b></p>
-                    </div>
-                    <div class="col-md-2">
-                        <p><b>:</b></p>
-                        <p><b>:</b></p>
-                        <p><b>:</b></p>
-                        <p><b>:</b></p>
-                        <p><b>:</b></p>
-                        <p><b>:</b></p>
-                        <p><b>:</b></p>
-                        <p><b>:</b></p>
-                        <p><b>:</b></p>
-                        <p><b>:</b></p>
-                        <p><b>:</b></p>
-                        <p><b>:</b></p>
-                        <p><b>:</b></p>
-                        <p><b>:</b></p>
-                        <p><b>:</b></p>
-                        <p><b>:</b></p>
-                        <p><b>:</b></p>
-                        <p><b>:</b></p>
-                        <p><b>:</b></p>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="value_nomor"></p>
-                        <p class="value_sub_nomor"></p>
-                        <p class="value_satuan"></p>
-                        <p class="value_kode_barang"></p>
-                        <p class="value_tercatat"></p>
-                        <p class="value_no_aset"></p>
-                        <p class="value_kode_lokasi"></p>
-                        <p class="value_kode_perkap"></p>
-                        <p class="value_kondisi_aset"></p>
-                        <p class="value_uraian_aset"></p>
-                        <p class="value_uraian_perkap"></p>
-                        <p class="value_kode_ruang"></p>
-                        <p class="value_uraian_ruang"></p>
-                        <p class="value_catatan"></p>
-                        <p class="value_kondisi"></p>
-                        <p class="value_nominal_aset"></p>
-                        <p class="value_tanggal_pengadaan"></p>
-                        <p class="value_sumber_pengadaan"></p>
-                        <img class="value_foto" src="" alt="" width="300px" class="img-thumbnail">
-                    </div>
-                </div>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Kel</th>
+                            <td>:</td>
+                            <td class="value_nomor"></td>
+                        </tr>
+                        <tr>
+                            <th>Skel</th>
+                            <td>:</td>
+                            <td class="value_sub_nomor"></td>
+                        </tr>
+                        <tr>
+                            <th>satuan</th>
+                            <td>:</td>
+                            <td class="value_satuan"></td>
+                        </tr>
+                        <tr>
+                            <th>kd_barang</th>
+                            <td>:</td>
+                            <td class="value_kode_barang"></td>
+                        </tr>
+                        <tr>
+                            <th>tercatat</th>
+                            <td>:</td>
+                            <td class="value_tercatat"></td>
+                        </tr>
+                        <tr>
+                            <th>no_aset</th>
+                            <td>:</td>
+                            <td class="value_no_aset"></td>
+                        </tr>
+                        <tr>
+                            <th>kd_lokasi</th>
+                            <td>:</td>
+                            <td class="value_kode_lokasi"></td>
+                        </tr>
+                        <tr>
+                            <th>kd_perk</th>
+                            <td>:</td>
+                            <td class="value_kode_perkap"></td>
+                        </tr>
+                        <tr>
+                            <th>kondisi</th>
+                            <td>:</td>
+                            <td class="value_kondisi_aset"></td>
+                        </tr>
+                        <tr>
+                            <th>urai</th>
+                            <td>:</td>
+                            <td class="value_uraian_aset"></td>
+                        </tr>
+                        <tr>
+                            <th>urperk</th>
+                            <td>:</td>
+                            <td class="value_uraian_perkap"></td>
+                        </tr>
+                        <tr>
+                            <th>kd_ruang</th>
+                            <td>:</td>
+                            <td class="value_kode_ruang"></td>
+                        </tr>
+                        <tr>
+                            <th>ur_ruang</th>
+                            <td>:</td>
+                            <td class="value_uraian_ruang"></td>
+                        </tr>
+                        <tr>
+                            <th>catat</th>
+                            <td>:</td>
+                            <td class="value_catatan"></td>
+                        </tr>
+                        <tr>
+                            <th>kondi</th>
+                            <td>:</td>
+                            <td class="value_kondisi"></td>
+                        </tr>
+                        <tr>
+                            <th>sakhir</th>
+                            <td>:</td>
+                            <td class="value_nominal_aset"></td>
+                        </tr>
+                        <tr>
+                            <th>Tanggal Pengadaan</th>
+                            <td>:</td>
+                            <td class="value_tanggal_pengadaan"></td>
+                        </tr>
+                        <tr>
+                            <th>Sumber Pengadaan</th>
+                            <td>:</td>
+                            <td class="value_sumber_pengadaan"></td>
+                        </tr>
+                        <tr>
+                            <th>Foto</th>
+                            <td>:</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <img class="img-thumbnail w-100 value_foto" src="" alt="">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="modal-footer">
                 <a href="" target="_blank" class="btn btn-primary linkHistoryAsset">History</a>
@@ -193,41 +234,47 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     const assetData = <?= json_encode($barang); ?>;
-    assetData.map((v, k) => v.no = k + 1);
+    assetData.map((v, k) => v.norut = k + 1);
 
     (function() {
         let table = $("#tableAsset").DataTable({
             data: assetData,
             columns: [{
-                    data: "no",
+                    data: "norut",
+                },
+                {
+                    data: "nomor",
+                },
+                {
+                    data: "sub_nomor",
                 },
                 {
                     data: "kode_barang",
                 },
                 {
-                    data: "kondisi_aset",
+                    data: "uraian_aset",
                 },
                 {
-                    data: "tanggal_pengadaan",
+                    data: "uraian_ruang",
                 },
                 {
-                    data: "user_penginput",
+                    data: "kondisi",
                 },
                 {
                     data: "id",
                     render: function(data, type, row) {
                         return `
                         <?php if (session()->get('role') == 1 || session()->get('role') == 2) : ?>
-                            <button type="button" class="btn btn-danger"  onclick="deleteAsset('${data}');">
+                            <button type="button" class="btn btn-danger" title="Hapus"  onclick="deleteAsset('${data}');">
                                 <i class="fas fa-trash"></i>
                             </button>
-                            <a href="<?= site_url('aset/edit/'); ?>${row.kode_barang}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                            <a href="<?= site_url('aset/edit/'); ?>${row.kode_barang}" title="Ubah Aset" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                         <?php endif; ?>
 
-                        <button type="button" class="btn btn-info"  onclick="showInfo('${data}');">
+                        <button type="button" class="btn btn-info" title="Detail" onclick="showInfo('${data}');">
                             <i class="fas fa-info-circle"></i>
                         </button>
-                        <button type="button" class="btn btn-primary" onclick="showQR('${data}');">
+                        <button type="button" class="btn btn-primary" title="Tampilkan QRCode" onclick="showQR('${data}');">
                             <i class="fas fa-qrcode"></i>
                         </button>
                     `;
@@ -241,8 +288,8 @@
         let data = assetData.find(function(data) {
             return data.id == id;
         });
-        $(".value_nomor").text(data.no ?? "-");
-        $(".value_sub_nomor").text(data.sub_no ?? "-");
+        $(".value_nomor").text(data.nomor ?? "-");
+        $(".value_sub_nomor").text(data.sub_nomor ?? "-");
         $(".value_satuan").text(data.satuan ?? "-");
         $(".value_kode_barang").text(data.kode_barang ?? "-");
         $(".value_tercatat").text(data.tercatat ?? "-");
@@ -277,7 +324,7 @@
 
     function deleteAsset(id) {
         $("#formDelete").attr("action", "<?= site_url('aset/delete/'); ?>" + id);
-        
+
         $("#modalDelete").modal("show");
     }
 </script>

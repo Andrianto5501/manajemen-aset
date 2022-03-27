@@ -23,22 +23,22 @@
                         <table class="table table-bordered table-sm" id="tableAsset">
                             <thead>
                                 <tr>
-                                    <th>Nomor</th>
-                                    <th>Sub Nomor</th>
-                                    <th>Satuan</th>
-                                    <th>Kode Barang</th>
-                                    <th>Tercatat</th>
-                                    <th>No Aset</th>
-                                    <th>Kode Lokasi</th>
-                                    <th>Kode Perkap</th>
-                                    <th>Kondisi Aset</th>
-                                    <th>Uraian Aset</th>
-                                    <th>Uraian Perkap</th>
-                                    <th>Kode Ruang</th>
-                                    <th>Uraian Ruang</th>
-                                    <th>Catatan</th>
-                                    <th>Kondisi</th>
-                                    <th>Nominal</th>
+                                    <th>Kel</</th>
+                                    <th>Skel</</th>
+                                    <th>satuan</</th>
+                                    <th>kd_barang</</th>
+                                    <th>tercatat</</th>
+                                    <th>no_aset</</th>
+                                    <th>kd_lokasi</</th>
+                                    <th>kd_perk</</th>
+                                    <th>kondisi</</th>
+                                    <th>urai</</th>
+                                    <th>urperk</</th>
+                                    <th>kd_ruang</</th>
+                                    <th>ur_ruang</</th>
+                                    <th>catat</</th>
+                                    <th>kondi</</th>
+                                    <th>sakhir</</th>
                                     <th>Tanggal Pengadaan</th>
                                     <th>Sumber Pengadaan</th>
                                 </tr>

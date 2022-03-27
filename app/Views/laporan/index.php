@@ -123,7 +123,7 @@
                                                             <p><?= $b['nominal_aset']; ?></p>
                                                             <p><?= $b['tanggal_pengadaan']; ?></p>
                                                             <p><?= $b['sumber_pengadaan']; ?></p>
-                                                            <img src="/img/aset/<?= $b['foto']; ?>" alt="<?= $b['kode_barang']; ?>" width="300px" class="img-thumbnail">
+                                                            <img src="<?= base_url() ?>/img/aset/<?= $b['foto']; ?>" alt="<?= $b['kode_barang']; ?>" width="300px" class="img-thumbnail">
                                                         </div>
                                                     </div>
                                                 </div>

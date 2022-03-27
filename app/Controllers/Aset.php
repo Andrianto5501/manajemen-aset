@@ -413,10 +413,10 @@ class Aset extends BaseController
                 ->resize(400, 200, true, 'height')
                 ->save(FCPATH . '/img/aset/' . $namaFoto);
 
-            if ($image != 'default.jpg') {
-                unlink('img/aset/' . $this->request->getVar('old_image'));
-            } else if ($namaFoto != 'default.jpg') {
-                unlink('img/aset/' . $this->request->getVar('old_image'));
+            if ($image != 'default.jpg' && $namaFoto != 'default.jpg' && $this->request->getVar('old_image') != '') {
+                if(file_exists(FCPATH . 'img/aset/' . $this->request->getVar('old_image'))) {
+                    unlink(FCPATH . 'img/aset/' . $this->request->getVar('old_image'));
+                }
             }
         }
 
@@ -520,6 +520,7 @@ class Aset extends BaseController
 
     public function import()
     {
+        ini_set('max_execution_time', '300');
         $file = $this->request->getFile('file_excel');
         $ext = $file->getClientExtension();
 
@@ -540,6 +541,12 @@ class Aset extends BaseController
             }
 
             if (($rowCell['3'] ?? "") != "" && ($rowCell['4'] ?? "") != "") {
+                $writer = new PngWriter();
+                $qrCode = QrCode::create($rowCell['3'])->setSize(300);
+                $result = $writer->write($qrCode);
+                // header('Content-Type: ' . $result->getMimeType());
+                $result->saveToFile(FCPATH . '/img/aset/qr/' . $qrCode->getData() . '.png');
+
                 $dataInsert[] = [
                     'nomor' => $rowCell['0'] ?? "",
                     'sub_nomor' => $rowCell['1'] ?? "",
@@ -560,7 +567,7 @@ class Aset extends BaseController
                     'foto' => $rowCell['16'] ?? "",
                     'tanggal_pengadaan' => $rowCell['17'] ?? "",
                     'sumber_pengadaan' => $rowCell['18'] ?? "",
-                    'qr_code' => $rowCell['19'] ?? "",
+                    'qr_code' => $qrCode->getData() . '.png',
                 ];
             }
         }
