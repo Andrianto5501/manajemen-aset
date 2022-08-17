@@ -37,7 +37,7 @@ class Otentikasi extends BaseController
 
         $model = new OtentikasiModel();
 
-        $username = 'SatDirPwt';
+        $username = 'KejariPwt';
         $password = '$2y$10$pHm9UMHxsxPfrzbV7TOcPu0pOotKLN5EQc7psipns/ciaNGZAs9aS'; // password : $2y$10$pHm9UMHxsxPfrzbV7TOcPu0pOotKLN5EQc7psipns/ciaNGZAs9aS
 
         $data = $model->getUsername($username);

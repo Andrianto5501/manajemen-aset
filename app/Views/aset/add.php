@@ -130,28 +130,30 @@
                         <hr>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="kd_ruang">kd_ruang</label>
-                                <select class="form-control <?= ($validation->hasError('kd_ruang')) ? 'is-invalid' : ''; ?>" name="kd_ruang" id="kd_ruang" value="<?= old('kd_ruang') ?>">
-                                    <option value="">=== Pilih Ruang ===</option>
-                                    <?php foreach ($ruang as $row) { ?>
-                                        <option value="<?= $row['kode'] ?>" <?= $row["kode"] == old('kd_ruang') ? "selected" : "" ?>><?= $row["kode"] . " - " . $row["nama"] ?></option>
-                                    <?php } ?>
-                                </select>
+                                <label for="kode_ruang">kd_ruang</label>
+                                <input type="text" class="form-control <?= ($validation->hasError('kode_ruang')) ? 'is-invalid' : ''; ?>" name="kode_ruang" id="kode_ruang" value="<?= old('kode_ruang'); ?>">
                                 <div class="invalid-feedback">
-                                    <?= $validation->getError('kd_ruang'); ?>
+                                    <?= $validation->getError('kode_ruang'); ?>
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="kode_gedung">kd_gedung</label>
-                                <select class="form-control <?= ($validation->hasError('kode_gedung')) ? 'is-invalid' : ''; ?>" name="kode_gedung" id="kode_gedung" value="<?= old('kode_gedung') ?>">
-                                    <option value="">=== Pilih Gedung ===</option>
-                                    <?php foreach ($gedung as $row) { ?>
-                                        <option value="<?= $row['kode'] ?>" <?= $row["kode"] == old('kode_gedung') ? "selected" : "" ?>><?= $row["kode"] . " - " . $row["nama"] ?></option>
-                                    <?php } ?>
-                                </select>
+                                <label for="uraian_ruang">uraian_ruang</label>
+                                <input type="text" class="form-control <?= ($validation->hasError('uraian_ruang')) ? 'is-invalid' : ''; ?>" name="uraian_ruang" id="uraian_ruang" value="<?= old('uraian_ruang'); ?>">
                                 <div class="invalid-feedback">
-                                    <?= $validation->getError('kode_gedung'); ?>
+                                    <?= $validation->getError('uraian_ruang'); ?>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="kode_gedung">kd_gedung</label>
+                            <select class="form-control <?= ($validation->hasError('kode_gedung')) ? 'is-invalid' : ''; ?>" name="kode_gedung" id="kode_gedung" value="<?= (old('kode_gedung')) ? old('kode_gedung') : $barang['kode_gedung']; ?>">
+                                <option value="">=== Pilih Gedung ===</option>
+                                <?php foreach ($gedung as $row) { ?>
+                                    <option value="<?= $row['kode'] ?>" <?= $row["kode"] == ((old('kode_gedung')) ? old('kode_gedung') : $barang['kode_gedung']) ? "selected" : "" ?>><?= $row["kode"] . " - " . $row["nama"] ?></option>
+                                <?php } ?>
+                            </select>
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('kode_gedung'); ?>
                             </div>
                         </div>
                         <hr>

@@ -75,6 +75,7 @@
                                                             <p><b>Uraian Aset</b></p>
                                                             <p><b>Uraian Perkap</b></p>
                                                             <p><b>Kode Ruang</b></p>
+                                                            <p><b>Uraian Ruang</b></p>
                                                             <p><b>Kode Gedung</b></p>
                                                             <p><b>Catatan</b></p>
                                                             <p><b>Kondisi</b></p>
@@ -117,6 +118,7 @@
                                                             <p><?= $b['uraian_aset']; ?></p>
                                                             <p><?= $b['uraian_perkap']; ?></p>
                                                             <p><?= $b['kode_ruang']; ?></p>
+                                                            <p><?= $b['uraian_ruang']; ?></p>
                                                             <p><?= $b['kode_gedung']; ?></p>
                                                             <p><?= $b['catatan']; ?></p>
                                                             <p><?= $b['kondisi']; ?></p>

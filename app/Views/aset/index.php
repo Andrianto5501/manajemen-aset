@@ -156,6 +156,11 @@
                             <td class="value_kode_ruang"></td>
                         </tr>
                         <tr>
+                            <th>uraian_ruang</th>
+                            <td>:</td>
+                            <td class="value_uraian_ruang"></td>
+                        </tr>
+                        <tr>
                             <th>kd_gedung</th>
                             <td>:</td>
                             <td class="value_kode_gedung"></td>
@@ -300,6 +305,7 @@
         $(".value_uraian_aset").text(data.uraian_aset ?? "-");
         $(".value_uraian_perkap").text(data.uraian_perkap ?? "-");
         $(".value_kode_ruang").text(data.kode_ruang ?? "-");
+        $(".value_uraian_ruang").text(data.uraian_ruang ?? "-");
         $(".value_kode_gedung").text(data.kode_gedung ?? "-");
         $(".value_catatan").text(data.catatan ?? "-");
         $(".value_kondisi").text(data.kondisi ?? "-");

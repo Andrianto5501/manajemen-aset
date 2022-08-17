@@ -146,6 +146,12 @@ class Aset extends BaseController
                     'required' => 'Kode Ruang harus diisi!',
                 ]
             ],
+            'uraian_ruang' => [
+                'rules' => 'trim|required',
+                'errors' => [
+                    'required' => 'Uraian Ruang harus diisi!',
+                ]
+            ],
             'kode_gedung' => [
                 'rules' => 'trim|required',
                 'errors' => [
@@ -236,6 +242,7 @@ class Aset extends BaseController
             'uraian_aset' => $this->request->getVar('uraian_aset'),
             'uraian_perkap' => $this->request->getVar('uraian_perkap'),
             'kode_ruang' => $this->request->getVar('kode_ruang'),
+            'uraian_ruang' => $this->request->getVar('uraian_ruang'),
             'kode_gedung' => $this->request->getVar('kode_gedung'),
             'nominal_aset' => $this->request->getVar('nominal_aset'),
             'kondisi' => $this->request->getVar('kondisi'),
@@ -356,6 +363,12 @@ class Aset extends BaseController
                     'required' => 'Kode Ruang harus diisi!',
                 ]
             ],
+            'uraian_ruang' => [
+                'rules' => 'trim|required',
+                'errors' => [
+                    'required' => 'Uraian Ruang harus diisi!',
+                ]
+            ],
             'kode_gedung' => [
                 'rules' => 'trim|required',
                 'errors' => [
@@ -451,6 +464,7 @@ class Aset extends BaseController
             'uraian_aset' => $this->request->getVar('uraian_aset'),
             'uraian_perkap' => $this->request->getVar('uraian_perkap'),
             'kode_ruang' => $this->request->getVar('kode_ruang'),
+            'uraian_ruang' => $this->request->getVar('uraian_ruang'),
             'kode_gedung' => $this->request->getVar('kode_gedung'),
             'nominal_aset' => $this->request->getVar('nominal_aset'),
             'kondisi' => $this->request->getVar('kondisi'),
@@ -575,13 +589,14 @@ class Aset extends BaseController
                     'uraian_aset' => $rowCell['9'] ?? "",
                     'uraian_perkap' => $rowCell['10'] ?? "",
                     'kode_ruang' => $rowCell['11'] ?? "",
-                    'kode_gedung' => $rowCell['12'] ?? "",
-                    'catatan' => $rowCell['13'] ?? "",
-                    'kondisi' => $rowCell['14'] ?? "",
-                    'nominal_aset' => $rowCell['15'] ?? "",
-                    'foto' => $rowCell['16'] ?? "",
-                    'tanggal_pengadaan' => $rowCell['17'] ?? "",
-                    'sumber_pengadaan' => $rowCell['18'] ?? "",
+                    'uraian_ruang' => $rowCell['12'] ?? "",
+                    'kode_gedung' => $rowCell['13'] ?? "",
+                    'catatan' => $rowCell['14'] ?? "",
+                    'kondisi' => $rowCell['15'] ?? "",
+                    'nominal_aset' => $rowCell['16'] ?? "",
+                    'foto' => $rowCell['17'] ?? "",
+                    'tanggal_pengadaan' => $rowCell['18'] ?? "",
+                    'sumber_pengadaan' => $rowCell['19'] ?? "",
                     'qr_code' => $qrCode->getData() . '.png',
                 ];
             }

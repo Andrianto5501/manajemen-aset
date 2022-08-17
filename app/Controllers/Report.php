@@ -104,7 +104,7 @@ class Report extends BaseController
         $pdf = new TCPDF('L', PDF_UNIT, 'A4', true, 'UTF-8', false);
 
         $pdf->SetCreator(PDF_CREATOR);
-        $pdf->SetAuthor('PT. Satria Dirgantara');
+        $pdf->SetAuthor('');
         $pdf->SetTitle('Laporan Aset');
         $pdf->SetSubject('PDF');
 
@@ -131,7 +131,7 @@ class Report extends BaseController
         </head>
 
         <body>
-            <h1>PT. Satria Dirgantara</h1>
+            <h1>Kejaksaan Negeri Purwokerto</h1>
             <hr>
             <h3>Daftar Aset</h3>
             <div style="overflow-x:auto;">

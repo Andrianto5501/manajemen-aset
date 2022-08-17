@@ -23,22 +23,23 @@
                         <table class="table table-bordered table-sm" id="tableAsset">
                             <thead>
                                 <tr>
-                                    <th>Kel</</th>
-                                    <th>Skel</</th>
-                                    <th>satuan</</th>
-                                    <th>kd_barang</</th>
-                                    <th>tercatat</</th>
-                                    <th>no_aset</</th>
-                                    <th>kd_lokasi</</th>
-                                    <th>kd_perk</</th>
-                                    <th>kondisi</</th>
-                                    <th>urai</</th>
-                                    <th>urperk</</th>
-                                    <th>kd_ruang</</th>
-                                    <th>kd_gedung</</th>
-                                    <th>catat</</th>
-                                    <th>kondi</</th>
-                                    <th>sakhir</</th>
+                                    <th>Kel</th>
+                                    <th>Skel</th>
+                                    <th>satuan</th>
+                                    <th>kd_barang</th>
+                                    <th>tercatat</th>
+                                    <th>no_aset</th>
+                                    <th>kd_lokasi</th>
+                                    <th>kd_perk</th>
+                                    <th>kondisi</th>
+                                    <th>urai</th>
+                                    <th>urperk</th>
+                                    <th>kd_ruang</th>
+                                    <th>uraian_ruang</th>
+                                    <th>kd_gedung</th>
+                                    <th>catat</th>
+                                    <th>kondi</th>
+                                    <th>sakhir</th>
                                     <th>Tanggal Pengadaan</th>
                                     <th>Sumber Pengadaan</th>
                                 </tr>
@@ -58,6 +59,7 @@
                                         <td><?= $h['uraian_aset']; ?></td>
                                         <td><?= $h['uraian_perkap']; ?></td>
                                         <td><?= $h['kode_ruang']; ?></td>
+                                        <td><?= $h['uraian_ruang']; ?></td>
                                         <td><?= $h['kode_gedung']; ?></td>
                                         <td><?= $h['catatan']; ?></td>
                                         <td><?= $h['kondisi']; ?></td>
