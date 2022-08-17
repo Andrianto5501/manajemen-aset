@@ -8,7 +8,7 @@
         <div class="col-lg-8">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <form action="/user" method="POST">
+                    <form action="<?= site_url("user") ?>" method="POST">
                         <?= csrf_field(); ?>
                         <div class="form-row">
                             <div class="form-group col">

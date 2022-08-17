@@ -13,7 +13,7 @@
 
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <form action="/profile/change" method="POST">
+                        <form action="<?= site_url("profile/change") ?>" method="POST">
                             <?= csrf_field(); ?>
                             <input type="hidden" name="id" id="id" value="<?= $user['id']; ?>">
                             <div class="form-group row">

@@ -113,7 +113,7 @@ class Profile extends BaseController
     {
         if (!$this->validate([
             'current_password' => [
-                'rules' => 'trim|required|min_length[8]',
+                'rules' => 'trim|required',
                 'errors' => [
                     'required' => 'Password Saat Ini harus diisi!',
                     'min_length' => 'Password Saat Ini kurang dari 8 karakter!',

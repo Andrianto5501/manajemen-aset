@@ -8,7 +8,7 @@
             <div class="col-lg-8">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <form action="/user/<?= $user['id']; ?>" method="POST">
+                        <form action="<?= site_url("user/" . $user['id']) ?>" method="POST">
                             <?= csrf_field(); ?>
                             <input type="hidden" name="_method" value="PUT">
                             <div class="form-row">

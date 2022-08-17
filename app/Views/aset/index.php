@@ -41,7 +41,7 @@
                                     <th>SKel</th>
                                     <th>kd_brg</th>
                                     <th>urai</th>
-                                    <th>ur_ruang</th>
+                                    <th>kd_gedung</th>
                                     <th>kondisi</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -156,9 +156,9 @@
                             <td class="value_kode_ruang"></td>
                         </tr>
                         <tr>
-                            <th>ur_ruang</th>
+                            <th>kd_gedung</th>
                             <td>:</td>
-                            <td class="value_uraian_ruang"></td>
+                            <td class="value_kode_gedung"></td>
                         </tr>
                         <tr>
                             <th>catat</th>
@@ -255,7 +255,7 @@
                     data: "uraian_aset",
                 },
                 {
-                    data: "uraian_ruang",
+                    data: "kode_ruang",
                 },
                 {
                     data: "kondisi",
@@ -268,7 +268,7 @@
                             <button type="button" class="btn btn-danger" title="Hapus"  onclick="deleteAsset('${data}');">
                                 <i class="fas fa-trash"></i>
                             </button>
-                            <a href="<?= site_url('aset/edit/'); ?>${row.kode_barang}" title="Ubah Aset" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                            <a href="<?= site_url('aset/edit/'); ?>${row.id}" title="Ubah Aset" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                         <?php endif; ?>
 
                         <button type="button" class="btn btn-info" title="Detail" onclick="showInfo('${data}');">
@@ -300,7 +300,7 @@
         $(".value_uraian_aset").text(data.uraian_aset ?? "-");
         $(".value_uraian_perkap").text(data.uraian_perkap ?? "-");
         $(".value_kode_ruang").text(data.kode_ruang ?? "-");
-        $(".value_uraian_ruang").text(data.uraian_ruang ?? "-");
+        $(".value_kode_gedung").text(data.kode_gedung ?? "-");
         $(".value_catatan").text(data.catatan ?? "-");
         $(".value_kondisi").text(data.kondisi ?? "-");
         $(".value_nominal_aset").text(data.nominal_aset ?? "-");

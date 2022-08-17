@@ -68,12 +68,12 @@
                     <!-- End My Profile -->
 
                     <!-- Reset Password -->
-                    <?php if (session()->get('role') == 1) : ?>
+                    <!-- <?php if (session()->get('role') == 1) : ?>
                         <a class="nav-link <?= ($title == "Reset Password") ? 'active' : ''; ?>" href="<?= base_url('profile/resetpassword'); ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-sync-alt"></i></div>
                             Reset Password
                         </a>
-                    <?php endif; ?>
+                    <?php endif; ?> -->
                     <!-- End Reset Password -->
 
                     <hr style="height:1px; border-width:0; color:gray; background-color:gray; margin-left: 15px; margin-right: 25px;">

@@ -67,7 +67,7 @@
                                                         Apakah data ini akan dihapus?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <form action="/ruang/<?= $r['id']; ?>" method="POST">
+                                                        <form action="<?= site_url("ruang/" . $r['id']) ?>" method="POST">
                                                             <?= csrf_field(); ?>
                                                             <input type="hidden" name="_method" value="DELETE">
                                                             <button type="submit" class="btn btn-danger">Ya</button>

@@ -12,7 +12,7 @@
             <div class="col">
 
                 <div class="d-inline">
-                    <a href="<?= site_url('gedung/add') ?> class="btn btn-primary"><i class="fas fa-building me-1"></i> Tambah Gedung</a>
+                    <a href="<?= site_url('gedung/add') ?>" class="btn btn-primary"><i class="fas fa-building me-1"></i> Tambah Gedung</a>
                 </div>
 
                 <!-- Alert Message -->
@@ -51,7 +51,7 @@
                                                         <i class="fas fa-trash"></i> Hapus
                                                     </button>
                                                 <?php endif; ?>
-                                                <a href="<?= site_url('gedung/edit') ?><?= $g['kode']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                                <a href="<?= site_url('gedung/edit/') ?><?= $g['kode']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
                                             </td>
                                         </tr>
 
@@ -69,7 +69,7 @@
                                                         Apakah data ini akan dihapus?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <form action="/gedung/<?= $g['id']; ?>" method="post" class="d-inline">
+                                                        <form action="<?= site_url("gedung/" . $g['id']) ?>" method="post" class="d-inline">
                                                             <?= csrf_field(); ?>
                                                             <input type="hidden" name="_method" value="DELETE">
                                                             <button type="submit" class="btn btn-danger">Ya</button>

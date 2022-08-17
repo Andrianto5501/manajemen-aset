@@ -66,7 +66,7 @@ $routes->get('/aset', 'Aset::index');
 $routes->get('/aset/add', 'Aset::create');
 $routes->post('/aset', 'Aset::save');
 $routes->get('/aset/edit/(:any)', 'Aset::edit/$1');
-$routes->put('/aset/(:any)', 'Aset::update/$1');
+$routes->post('/aset/update/(:any)', 'Aset::update/$1');
 $routes->delete('/aset/(:num)', 'Aset::delete/$1');
 $routes->get('/aset/restore(:segment)', 'Aset::restore/$1');
 $routes->delete('/aset/destroy/(:any)', 'Aset::destroy/$1');

@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <h1>Kejaksaan Negeri Purwokerto</h1>
+    <h1>PT. Satria Dirgantara</h1>
     <hr>
     <h3>Daftar Aset</h3>
     <table>

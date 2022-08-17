@@ -35,7 +35,7 @@
                                     <th>urai</</th>
                                     <th>urperk</</th>
                                     <th>kd_ruang</</th>
-                                    <th>ur_ruang</</th>
+                                    <th>kd_gedung</</th>
                                     <th>catat</</th>
                                     <th>kondi</</th>
                                     <th>sakhir</</th>
@@ -58,7 +58,7 @@
                                         <td><?= $h['uraian_aset']; ?></td>
                                         <td><?= $h['uraian_perkap']; ?></td>
                                         <td><?= $h['kode_ruang']; ?></td>
-                                        <td><?= $h['uraian_ruang']; ?></td>
+                                        <td><?= $h['kode_gedung']; ?></td>
                                         <td><?= $h['catatan']; ?></td>
                                         <td><?= $h['kondisi']; ?></td>
                                         <td><?= $h['nominal_aset']; ?></td>

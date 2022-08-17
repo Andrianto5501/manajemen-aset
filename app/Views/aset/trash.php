@@ -36,7 +36,7 @@
                                     <th>SKel</th>
                                     <th>kd_brg</th>
                                     <th>urai</th>
-                                    <th>ur_ruang</th>
+                                    <th>kd_ruang</th>
                                     <th>kondisi</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -50,7 +50,7 @@
                                         <td><?= $b['sub_nomor']; ?></td>
                                         <td><?= $b['kode_barang']; ?></td>
                                         <td><?= $b['uraian_aset']; ?></td>
-                                        <td><?= $b['uraian_ruang']; ?></td>
+                                        <td><?= $b['kode_ruang']; ?></td>
                                         <td><?= $b['kondisi']; ?></td>
                                         <td>
                                             <form action="<?= site_url("aset/restore/"). $b['id'] ?>" method="post" class="d-inline">
@@ -79,7 +79,7 @@
                                                     Apakah data ini akan dihapus secara permanen?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <form action="/aset/destroy/<?= $b['kode_barang']; ?>" method="post" class="d-inline">
+                                                    <form action="<?= site_url("aset/destroy/") . $b['id']; ?>" method="post" class="d-inline">
                                                         <?= csrf_field(); ?>
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <button type="submit" class="btn btn-danger">Ya</button>

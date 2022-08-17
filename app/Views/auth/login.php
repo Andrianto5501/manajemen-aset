@@ -36,9 +36,9 @@
                                         <input class="form-check-input" id="inputRememberPassword" type="checkbox" onclick="myFunction()" />
                                         <label class="form-check-label" for="inputRememberPassword">Show Password</label>
                                     </div>
-                                    <div class="d-flex justify-content-center">
-                                        <button class="btn btn-primary" type="submit"><i class="fas fa-sign-in-alt"></i> Login</button>
-                                    </div>
+                                    <button class="btn btn-primary w-100" type="submit"><i class="fas fa-sign-in-alt"></i> Login</button>
+                                    <div class="w-100 my-2 text-center">or</div>
+                                    <a href="<?= site_url("assetScan") ?>" class="btn btn-info w-100" type="button"><i class="fa fa-camera"></i> QR-Code Scanner</a>
                                 </form>
                             </div>
                             <div class="card-footer text-center py-3">

@@ -13,7 +13,7 @@
 
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <form action="/profile" method="POST" enctype="multipart/form-data">
+                        <form action="<?= site_url("profile") ?>" method="POST" enctype="multipart/form-data">
                             <?= csrf_field(); ?>
                             <input type="hidden" name="id" id="id" value="<?= $user['id']; ?>">
                             <input type="hidden" name="oldImage" id="oldImage" value="<?= $user['image']; ?>">

@@ -8,7 +8,7 @@
             <div class="col-lg-8">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <form action="/gedung/<?= $gedung['id']; ?>" method="POST">
+                        <form action="<?= site_url("gedung/" . $gedung['id']) ?>" method="POST">
                             <?= csrf_field(); ?>
                             <input type="hidden" name="_method" value="PUT">
                             <div class="form-group row">

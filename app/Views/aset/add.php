@@ -115,23 +115,6 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="kode_ruang">kd_ruang</label>
-                                <input type="text" class="form-control <?= ($validation->hasError('kode_ruang')) ? 'is-invalid' : ''; ?>" name="kode_ruang" id="kode_ruang" value="<?= old('kode_ruang'); ?>">
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('kode_ruang'); ?>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="uraian_ruang">ur_ruang</label>
-                                <input type="text" class="form-control <?= ($validation->hasError('uraian_ruang')) ? 'is-invalid' : ''; ?>" name="uraian_ruang" id="uraian_ruang" value="<?= old('uraian_ruang'); ?>">
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('uraian_ruang'); ?>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-6">
                                 <label for="nominal_aset">sakhir</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -141,6 +124,33 @@
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('nominal_aset'); ?>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="kd_ruang">kd_ruang</label>
+                                <select class="form-control <?= ($validation->hasError('kd_ruang')) ? 'is-invalid' : ''; ?>" name="kd_ruang" id="kd_ruang" value="<?= old('kd_ruang') ?>">
+                                    <option value="">=== Pilih Ruang ===</option>
+                                    <?php foreach ($ruang as $row) { ?>
+                                        <option value="<?= $row['kode'] ?>" <?= $row["kode"] == old('kd_ruang') ? "selected" : "" ?>><?= $row["kode"] . " - " . $row["nama"] ?></option>
+                                    <?php } ?>
+                                </select>
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('kd_ruang'); ?>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="kode_gedung">kd_gedung</label>
+                                <select class="form-control <?= ($validation->hasError('kode_gedung')) ? 'is-invalid' : ''; ?>" name="kode_gedung" id="kode_gedung" value="<?= old('kode_gedung') ?>">
+                                    <option value="">=== Pilih Gedung ===</option>
+                                    <?php foreach ($gedung as $row) { ?>
+                                        <option value="<?= $row['kode'] ?>" <?= $row["kode"] == old('kode_gedung') ? "selected" : "" ?>><?= $row["kode"] . " - " . $row["nama"] ?></option>
+                                    <?php } ?>
+                                </select>
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('kode_gedung'); ?>
                                 </div>
                             </div>
                         </div>
@@ -162,13 +172,16 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="form-group row">
+                        <div class="form-group">
                             <label for="kondisi">kondi</label>
-                            <div class="col">
-                                <textarea type="text" class="form-control <?= ($validation->hasError('kondisi')) ? 'is-invalid' : ''; ?>" name="kondisi" id="kondisi"><?= old('kondisi'); ?></textarea>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('kondisi'); ?>
-                                </div>
+                            <select class="form-control <?= ($validation->hasError('kondisi')) ? 'is-invalid' : ''; ?>" name="kondisi" id="kondisi">
+                                <option value="">=== Pilih Kondisi ===</option>
+                                <option value="Baik" <?= (old('kondisi') == 'Baik') ? 'selected' : ''; ?>>Baik</option>
+                                <option value="Kurang" <?= (old('kondisi') == 'Kurang') ? 'selected' : ''; ?>>Kurang</option>
+                                <option value="Rusak" <?= (old('kondisi') == 'Rusak') ? 'selected' : ''; ?>>Rusak</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('kondisi'); ?>
                             </div>
                         </div>
                         <div class="form-group row">

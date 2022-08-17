@@ -13,7 +13,7 @@
 
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <form action="/profile/reset" method="POST">
+                        <form action="<?= site_url("profile/reset") ?>" method="POST">
                             <?= csrf_field(); ?>
                             <div class="form-group row">
                                 <label for="email" class="col-sm-3 col-form-label">Email</label>

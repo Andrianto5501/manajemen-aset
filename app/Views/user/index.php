@@ -75,7 +75,7 @@
                                                         Apakah data ini akan dihapus?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <form action="/user/<?= $user['id']; ?>" method="POST" class="d-inline">
+                                                        <form action="<?= site_url() ?>/user/<?= $user['id']; ?>" method="POST" class="d-inline">
                                                             <?= csrf_field(); ?>
                                                             <input type="hidden" name="_method" value="DELETE">
                                                             <button type=" submit" class="btn btn-danger">Ya</button>

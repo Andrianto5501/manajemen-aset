@@ -8,7 +8,7 @@
             <div class="col-lg-8">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <form action="/ruang/<?= $ruang['id']; ?>" method="POST">
+                        <form action="<?= site_url("ruang/" . $ruang['id']) ?>" method="POST">
                             <?= csrf_field(); ?>
                             <input type="hidden" name="_method" value="PUT">
                             <div class="form-group row">
@@ -32,7 +32,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-10">
                                     <button type="submit" class="btn btn-primary">Update Data</button>
-                                    <a href="<?= base_url('super/ruangan'); ?>" class="btn btn-secondary">Kembali</a>
+                                    <a href="<?= base_url('ruang'); ?>" class="btn btn-secondary">Kembali</a>
                                 </div>
                             </div>
                         </form>

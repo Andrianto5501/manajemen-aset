@@ -6,6 +6,8 @@ use App\Models\AsetModel;
 use App\Models\UserModel;
 use Endroid\QrCode\QrCode;
 use App\Controllers\BaseController;
+use App\Models\GedungModel;
+use App\Models\RuangModel;
 use Endroid\QrCode\Writer\PngWriter;
 use Exception;
 use PhpOffice\PhpSpreadsheet\Reader\Xls;
@@ -16,11 +18,14 @@ class Aset extends BaseController
 {
     protected $userModel;
     protected $asetModel;
+    protected $ruangModel;
 
     public function __construct()
     {
         $this->userModel = new UserModel();
         $this->asetModel = new AsetModel();
+        $this->ruangModel = new RuangModel();
+        $this->gedungModel = new GedungModel();
 
         helper('form');
     }
@@ -55,6 +60,8 @@ class Aset extends BaseController
         $data = [
             'title' => 'Tambah Data Aset',
             'validation' => \Config\Services::validation(),
+            'ruang' => $this->ruangModel->get()->getResultArray(),
+            'gedung' => $this->gedungModel->get()->getResultArray(),
             // 'user' => $this->userModel->where('nik', session()->get('nik'))->first(),
         ];
 
@@ -139,10 +146,10 @@ class Aset extends BaseController
                     'required' => 'Kode Ruang harus diisi!',
                 ]
             ],
-            'uraian_ruang' => [
+            'kode_gedung' => [
                 'rules' => 'trim|required',
                 'errors' => [
-                    'required' => 'Uraian Ruang harus diisi!',
+                    'required' => 'Kode Gedung harus diisi!',
                 ]
             ],
             'nominal_aset' => [
@@ -229,7 +236,7 @@ class Aset extends BaseController
             'uraian_aset' => $this->request->getVar('uraian_aset'),
             'uraian_perkap' => $this->request->getVar('uraian_perkap'),
             'kode_ruang' => $this->request->getVar('kode_ruang'),
-            'uraian_ruang' => $this->request->getVar('uraian_ruang'),
+            'kode_gedung' => $this->request->getVar('kode_gedung'),
             'nominal_aset' => $this->request->getVar('nominal_aset'),
             'kondisi' => $this->request->getVar('kondisi'),
             'catatan' => $this->request->getVar('catatan'),
@@ -253,7 +260,7 @@ class Aset extends BaseController
         // return $this->response->setJSON([ "data" => $cekcAset, "save" => $dataSave], 200);
     }
 
-    public function edit($kode_barang)
+    public function edit($id)
     {
         if (session('role') == 3) {
             return redirect()->to('home');
@@ -262,14 +269,16 @@ class Aset extends BaseController
         $data = [
             'title' => 'Ubah Data Aset',
             'validation' => \Config\Services::validation(),
-            'barang' => $this->asetModel->where('kode_barang', $kode_barang)->first(),
+            'barang' => $this->asetModel->where('id', $id)->first(),
+            'ruang' => $this->ruangModel->get()->getResultArray(),
+            'gedung' => $this->gedungModel->get()->getResultArray(),
             'user' => $this->userModel->where('name', session()->get('name'))->first(),
         ];
 
         return view('aset/edit', $data);
     }
 
-    public function update($id)
+    public function update($barangId)
     {
         if (!$this->validate([
             'nomor' => [
@@ -347,10 +356,10 @@ class Aset extends BaseController
                     'required' => 'Kode Ruang harus diisi!',
                 ]
             ],
-            'uraian_ruang' => [
+            'kode_gedung' => [
                 'rules' => 'trim|required',
                 'errors' => [
-                    'required' => 'Uraian Ruang harus diisi!',
+                    'required' => 'Kode Gedung harus diisi!',
                 ]
             ],
             'nominal_aset' => [
@@ -399,7 +408,7 @@ class Aset extends BaseController
                 ]
             ]
         ])) {
-            return redirect()->to('/aset/edit/' . $this->request->getVar('kode_barang'))->withInput();
+            return redirect()->to('/aset/edit/' . $barangId)->withInput();
         }
 
         $fileFoto = $this->request->getFile('image');
@@ -414,7 +423,7 @@ class Aset extends BaseController
                 ->save(FCPATH . '/img/aset/' . $namaFoto);
 
             if ($image != 'default.jpg' && $namaFoto != 'default.jpg' && $this->request->getVar('old_image') != '') {
-                if(file_exists(FCPATH . 'img/aset/' . $this->request->getVar('old_image'))) {
+                if (file_exists(FCPATH . 'img/aset/' . $this->request->getVar('old_image'))) {
                     unlink(FCPATH . 'img/aset/' . $this->request->getVar('old_image'));
                 }
             }
@@ -425,11 +434,11 @@ class Aset extends BaseController
         $writer = new PngWriter();
         $qrCode = QrCode::create($kode)->setSize(300);
         $result = $writer->write($qrCode);
-        header('Content-Type: ' . $result->getMimeType());
+        // header('Content-Type: ' . $result->getMimeType());
         $result->saveToFile(FCPATH . '/img/aset/qr/' . $qrCode->getData() . '.png');
 
-        $this->asetModel->save([
-            'id' => $id,
+        $dtUpdate = [
+            'id' => $barangId,
             'nomor' => $this->request->getVar('nomor'),
             'sub_nomor' => $this->request->getVar('sub_nomor'),
             'satuan' => $this->request->getVar('satuan'),
@@ -442,7 +451,7 @@ class Aset extends BaseController
             'uraian_aset' => $this->request->getVar('uraian_aset'),
             'uraian_perkap' => $this->request->getVar('uraian_perkap'),
             'kode_ruang' => $this->request->getVar('kode_ruang'),
-            'uraian_ruang' => $this->request->getVar('uraian_ruang'),
+            'kode_gedung' => $this->request->getVar('kode_gedung'),
             'nominal_aset' => $this->request->getVar('nominal_aset'),
             'kondisi' => $this->request->getVar('kondisi'),
             'catatan' => $this->request->getVar('catatan'),
@@ -451,11 +460,13 @@ class Aset extends BaseController
             'user_penginput' => session()->get('name'),
             'qr_code' => $qrCode->getData() . '.png',
             'foto' => $namaFoto,
-        ]);
+        ];
+        $test = $this->asetModel->ubah($barangId, $dtUpdate);
 
+        // return ($test);
         session()->setFlashdata('message', '<div class="alert alert-success">Data <strong>aset</strong> berhasil diubah!</div>');
-
-        return redirect()->to('/aset');
+        
+        return redirect()->to('/aset/edit/' . $barangId);
     }
 
     public function delete($id)
@@ -487,20 +498,24 @@ class Aset extends BaseController
         return redirect()->to('/aset');
     }
 
-    public function destroy($kode)
+    public function destroy($id)
     {
         $barang = $this->db->table('barang')->get()->getRowArray();
 
-        if ($barang['foto'] != 'default.jpg') {
-            unlink('img/aset/' . $barang['foto']);
-        }
+        try {
+            if ($barang['foto'] != 'default.jpg' && $barang['foto'] != '') {
+                unlink('img/aset/' . $barang['foto']);
+            }
 
-        if ($barang['qr_code'] || $barang['qr_code'] == null) {
-            unlink('img/aset/qr/' . $barang['qr_code']);
+            if ($barang['qr_code'] || $barang['qr_code'] == null) {
+                unlink('img/aset/qr/' . $barang['qr_code']);
+            }
+        } catch (\Exception $e) {
+            //
         }
 
         $builder = $this->db->table('barang');
-        $builder->delete(['kode_barang' => $kode]);
+        $builder->delete(['id' => $id]);
         session()->setFlashdata('message', '<div class="alert alert-success">Data <strong>aset</strong> berhasil dihapus permanen!</div>');
         return redirect()->to('/aset/trash');
     }
@@ -560,7 +575,7 @@ class Aset extends BaseController
                     'uraian_aset' => $rowCell['9'] ?? "",
                     'uraian_perkap' => $rowCell['10'] ?? "",
                     'kode_ruang' => $rowCell['11'] ?? "",
-                    'uraian_ruang' => $rowCell['12'] ?? "",
+                    'kode_gedung' => $rowCell['12'] ?? "",
                     'catatan' => $rowCell['13'] ?? "",
                     'kondisi' => $rowCell['14'] ?? "",
                     'nominal_aset' => $rowCell['15'] ?? "",

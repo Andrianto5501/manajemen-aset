@@ -46,7 +46,7 @@ class Report extends BaseController
             ->setCellValue('K1', 'Uraian Aset')
             ->setCellValue('L1', 'Uraian Perkap')
             ->setCellValue('M1', 'Kode Ruang')
-            ->setCellValue('N1', 'Uraian Ruang')
+            ->setCellValue('N1', 'Kode Gedung')
             ->setCellValue('O1', 'Catatan')
             ->setCellValue('P1', 'Kondisi')
             ->setCellValue('Q1', 'Nominal Aset')
@@ -74,7 +74,7 @@ class Report extends BaseController
                 ->setCellValue('K' . $column, $data['uraian_aset'])
                 ->setCellValue('L' . $column, $data['uraian_perkap'])
                 ->setCellValue('M' . $column, $data['kode_ruang'])
-                ->setCellValue('N' . $column, $data['uraian_ruang'])
+                ->setCellValue('N' . $column, $data['kode_gedung'])
                 ->setCellValue('O' . $column, $data['catatan'])
                 ->setCellValue('P' . $column, $data['kondisi'])
                 ->setCellValue('Q' . $column, $data['nominal_aset'])
@@ -104,7 +104,7 @@ class Report extends BaseController
         $pdf = new TCPDF('L', PDF_UNIT, 'A4', true, 'UTF-8', false);
 
         $pdf->SetCreator(PDF_CREATOR);
-        $pdf->SetAuthor('Kejaksaan Negeri Purwokerto');
+        $pdf->SetAuthor('PT. Satria Dirgantara');
         $pdf->SetTitle('Laporan Aset');
         $pdf->SetSubject('PDF');
 
@@ -131,7 +131,7 @@ class Report extends BaseController
         </head>
 
         <body>
-            <h1>Kejaksaan Negeri Purwokerto</h1>
+            <h1>PT. Satria Dirgantara</h1>
             <hr>
             <h3>Daftar Aset</h3>
             <div style="overflow-x:auto;">

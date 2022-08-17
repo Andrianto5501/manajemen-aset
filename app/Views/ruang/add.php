@@ -8,7 +8,7 @@
         <div class="col-lg-8">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <form action="/ruang" method="POST">
+                    <form action="<?= site_url("ruang") ?>" method="POST">
                         <?= csrf_field(); ?>
                         <div class="form-group row">
                             <label for="kode" class="col-sm-3 col-form-label">Kode</label>

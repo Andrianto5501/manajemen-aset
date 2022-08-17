@@ -22,7 +22,7 @@ class User extends BaseController
 
         $data = [
             'title' => 'Data User',
-            'users' => $this->userModel->where('role !=', 1)->orderBy('role', 'asc')->findAll(),
+            'users' => $this->userModel->where('lock !=', 1)->orderBy('role', 'asc')->findAll(),
         ];
 
         return view('user/index', $data);
@@ -138,8 +138,7 @@ class User extends BaseController
             'address' => $this->request->getVar('address'),
             'telephone' => $this->request->getVar('telephone'),
             'image' => 'default.jpg',
-            'role' => $this->request->getVar('role'),
-            'created_at' => date("d-m-Y")
+            'role' => $this->request->getVar('role')
         ]);
 
         session()->setFlashdata('message', '<div class="alert alert-success">Data <strong>user</strong> berhasil ditambahkan!</div>');
